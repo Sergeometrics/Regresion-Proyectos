@@ -4,6 +4,9 @@ library(dplyr)
 library(tidyverse)
 library(mctest)
 library(car)
+library(nortest)
+library(tseries)
+library(lmtest)
 
 imdb_datos_completos  <- read_csv("imdb_datos_completos.csv")
 View(imdb_datos_completos)
@@ -165,3 +168,34 @@ summary(modelo6_alterno)
 summary(modelo_optimizado)
 
 #Hay diferencias a tener en cuenta con el AIC y el BIC
+
+### Análisis residual
+## Modelo 6 alterno
+# qqplot
+
+qqnorm(modelo6_alterno$residuals)
+qqline(modelo6_alterno$residuals) # Parecen no ser normales
+
+# Tests de normalidad
+
+shapiro.test(modelo6_alterno$residuals) # Los datos no son normales
+lillie.test(modelo6_alterno$residuals) # Los datos no son normales
+ad.test(modelo6_alterno$residuals) # Los datos no son normales
+jarque.bera.test(modelo6_alterno$residuals) # Los datos no son normales
+
+# Homocedasticidad
+
+ggplot(data = datos_bien, aes(x = modelo6_alterno$fitted.values, y = modelo6_alterno$residuals)) +
+geom_point() +
+geom_smooth(color = "firebrick", se = FALSE) +
+geom_hline(yintercept = 0) +
+theme_bw() # Parece que los datos no son homocedásticos
+
+bptest(modelo6_alterno) # Los datos no son homocedásticos
+
+# Multicolinealidad
+
+omcdiag(modelo6_alterno)
+imcdiag(modelo6_alterno)
+car::vif(modelo6_alterno) # No hay multicolinealidad
+dwt(modelo6_alterno, alternative = "two.sided") # No hay autocorrelación
