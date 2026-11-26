@@ -117,6 +117,7 @@ summary(modelo5) #Quería ver qué pasaba si usaba solo el starYear,
 #pues las gráficas con los residuales parecían iguales y
 #resultó que es mejor la interacción, pero por lo que dijo la profe mejor quitarlo
 
+
 ggplot(data = datos_bien, aes(x = modelo5$fitted.values, y = modelo5$residuals)) +
   geom_point() # Otra vez se ve la heterocedasticidad
 

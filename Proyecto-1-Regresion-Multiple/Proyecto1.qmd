@@ -241,6 +241,8 @@ attach(datos_bien)
 
 Como objetivo principal del documento se explorarà la creacion de modelos acordes a nuestra base de datos, es asì que se exploraràn distintas alternativas y se evaluaràn los fuertes de estos.
 
+### 3.1 Modelos creados manualmente.
+
 Iniciamos con el primer par de modelos definidos como:
 
 ```{r}
@@ -360,10 +362,10 @@ ggplot(data = datos_m4, aes(y = residuales, x = averageRating*numVotes)) + geom_
 
 ```
 
-Este cuarto modelo presenta mejoras en nuestro $R²_{adj}$, se adaptarà un quinto modelo probando la inclusion de `startYear`
+Este cuarto modelo presenta mejoras en nuestro $R²_{adj}$, se adaptarà un quinto modelo probando la inclusion de `startYear` , `averageRating` y `presupuesto:startYear` al tercer modelo.
 
 ```{r}
-modelo5 <- update(modelo4, .~. +startYear)
+modelo5 <- update(modelo3, . ~ . - presupuesto:startYear + startYear + averageRating)
 summary(modelo5)
 
 ##Revisión multicolinealidad
@@ -373,11 +375,24 @@ car::vif(modelo5)
 
 ```
 
-### Modelo optimizado, Funcion `step()`
+Como untimo cambio a nuestro modelo creado de manera manual crearemos la sexta iteracion de nuestro modelo creado "a ojo" eliminando la variable `startYear` por la colinealidad con `startYear:presupuesto`
+
+```{r}
+modelo6 <- update(modelo5, .~. - startYear)
+summary(modelo6)
+
+omcdiag(modelo6)
+imcdiag(modelo6)
+car::vif(modelo6)
+```
+
+Este último modelo creado manualmente se adapta de manera correcta a nuestros objetivos, a continuacion se compará al modelo creado automáticamente por el comando `step()`.
+
+### 3.2 Modelo optimizado, Funcion `step()`
 
 A la par de la creacion manual de nuestros modelos y llegar a nuestro modelo deseado tambien se aplicarà la funcion `step()` con el objetivo de crear un modelo optimizado de manera automàtica.
 
-Para esto se define en primer lugar nuestro modelo "full"
+Para esto se define en primer lugar nuestro modelo "full", o en este caso, 2 modelos "full"; uno incluyendo nuestra varriable categorica `PrimerGenero` y otra sin esta categórica
 
 ```{r}
 #| output: false
@@ -386,6 +401,10 @@ Para esto se define en primer lugar nuestro modelo "full"
 modelo_full <- lm(taquilla ~ (runtimeMinutes + averageRating + numVotes + presupuesto + 
   startYear + popularity + PrimerGenero)^2)
 summary(modelo_full)
+
+modelo_full2 <- lm(taquilla ~ (runtimeMinutes + averageRating + numVotes + presupuesto +
+                                 startYear + popularity)^2)
+summary(modelo_full2)
 
 ```
 
@@ -396,15 +415,32 @@ Corremos el comando `steps()`
 
 modelo_optimizado <- step(modelo_full)
 
+
+modelo_optimizado2 <- step(modelo_full2)
+summary(modelo_optimizado2)
 ```
 
-Y obtenemos Nuestro modelo optimizado:
+Y obtenemos nuestros modelos optimizados:
 
 ```{r}
 summary(modelo_optimizado)
+summary(modelo_optimizado2)
 
 AIC(modelo5)
+AIC(modelo_optimizado2)
 AIC(modelo_optimizado)
 ```
 
+### 3.3 Comparación de nuestros 3 modelos finalistas
+
 Realizando la comparaciòn de nuestro modelo manual con nuestro modelo creado automàticamente con la funcion `step()` podemos apreciar:
+
+Nuestro modelo con mejor valor de `AIC` es nuestro modelo optimizado con todas las variables (incluyendo nuestras categóricas de `primerGenero` relacionadas con la variable de presupuesto) esto quiere decir una cantidad enorme de estimados de los cuales son muy pocos los realmente significantes.
+
+Nuestro segundo mejor modelo fue el segundo optimizado del comando `steps()`, el cual, aunque con un AIC mayor a nuestro `modelo_optimizado` original este tiene una disminucion notable del numero de variables y del porcentaje de estas que podemos considerar estadisticamente significativas.
+
+Nuestro tercer modelo, el "creado manualmente" se queda rezagado comparado a los otros 2 al comparar tanto el AIC como el $R²_{adj}$, siendo este el modelo inferior a pesar de su sencilles.
+
+# Parte #4 validacion del modelo
+
+Se realizan las siguientes comprobaciones y test a nuestro modelo elegido
