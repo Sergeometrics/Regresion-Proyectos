@@ -14,13 +14,15 @@
 
 #### Camilo Andres Murcia Perdomo
 
-# Parte #1: Introduccion, datos y objetivo
+# Parte #1: Introduccion y datos
 
 ## 1.1 Introducción
 
-La regresión lineal es una herramienta por la cual se busca hallar modelos que relacionen una variable respuesta con una variable explicativa. La regresion lineal múltiple, en cambio, relaciona más de una variable explicativa a la respuesta, dandole así un mayor potencial de expllicacion al modelo propuesto a cambio de hacer el modelo mas complejo.
+La regresión lineal es una herramienta con la cual se busca hallar modelos que relacionen una variable respuesta con una variable explicativa. La regresion lineal **múltiple**, en cambio, relaciona más de una variable explicativa a la respuesta, dandole así un mayor potencial de explicacion al modelo propuesto a cambio de hacerlo mas complejo.
 
 Es así, como la regresion lineal múltiple se entiende como una generalizacion de la regresion lineal simple, una herramienta distinta con usos practicos diferentes a su alternativa de una variable. En este documento académico se usará la regresion linear multiple para adaptar un modelo explicativo, a continuacion se explicaran los objetivos, los datos y el procedimiento a seguir con el cual se realizo la creacion y uso del modelo.
+
+(El repositorio donde se encuentran todos los distintos archivos y evidencias del proceso puede ser consultado <a href="https://github.com/Sergeometrics/Regresion-Proyectos" target="_blank" rel="noopener noreferrer">aquí</a>)
 
 ## 1.2 TMDb: La base de datos seleccionada
 
@@ -137,4 +139,95 @@ write_csv(imdb_final, "imdb_datos_completos.csv")
 
 ```
 
-Finalmente, se solicita a la API aplicar la funcion `get_tmdb()` a cada identificador `tconst` y combina las filas devueltas en un solo data frame. así, finalmente la funcion `write_csv()`guarda los resultados de nuetras consultas en un solo <a href="../imdb_datos_completos.csv" download>imdb datos completos.csv</a> organizado
+Finalmente, se solicita a la API aplicar la funcion `get_tmdb()` a cada identificador `tconst` y combina las filas devueltas en un solo data frame. así, finalmente la funcion `write_csv()`guarda los resultados de nuetras consultas en un solo <a href="../imdb_datos_completos.csv" download>imdb datos completos.csv</a> organizado.
+
+## 1.4 Las variables y la base de datos
+
+Con nuestro csv preparado, podemos empezar con los preliminares de nuestro analisis de regresion, para esto definimos nuestras variables:
+
+1.  `tconst` : variable identificadora única (pk) de las bases de IMDb y TMDb utilidad a la hora de unir ambas bases.
+
+2.  `primaryTitle` : Título principal de la película en su idioma original.
+
+3.  `startYear` : Año de publicacion de la película.
+
+4.  `runtimeMinutes` : Duracion en minutos de la cinta.
+
+5.  `genres` : generos de la película, separados por comas.
+
+6.  `averageRating` : calificacion promedio de los usuarios.
+
+7.  `nunmVotes` : número de usuarios que calificaron la película.
+
+8.  `presupuesto` : presupuesto para la realilzazcion de la película en USD.
+
+9.  `taquilla` : ingresos de la película en taquilla
+
+10. `popularity` : score calculado diariamente por TMDb que combina la actividad reciente en su plataforma alrededor de la película (no tiene unidades establecidas o públicas, se interpreta como in indicador de las interacciones con la pelicula dada)
+
+# Parte #2: preliminares, hipotesis y analisis exploratorio
+
+Como primera accion tras tener nuestros datos preparados y leer nuestras variables vamos a definir una variable objetivo, en este caso, la variable de interés será `taquilla` y se intentará adaptar un modelo que explique el comportamiento de esta en base a los demás datos. Preliminarmente se teorizan correlaciones altas de `taquilla` con variables como `popularity`, `presupuesto` y `rating`.
+
+Es así que con un objetivo claro, se realizará un analisis exploratorio de nuestras variables, buscando inicialmente relaciones de nuestras otras variables con `taquilla`.
+
+El archivo de .r donde se encuentra el codigo entero es: `<a href="Modelos_lineales_múltiples.r" download>Modelos_lineales_múltiples`{=html}.r</a>, en este mismo documento se explicará mas a fondo el desarrollo del código del archivo adjunto.
+
+Inicialmente se realizan preliminares del archivo como librerias y lectura/adaptacion de los datos
+
+```{r}
+#| output: false
+#| warning: false 
+#| message: false
+
+
+library(readr)
+library(ggplot2)
+library(dplyr)
+library(tidyverse)
+library(mctest)
+library(car)
+library(GGally)
+
+imdb_datos_completos  <- read_csv("../imdb_datos_completos.csv")
+
+
+ colnames(imdb_datos_completos)
+
+datos_bien1 <- imdb_datos_completos |> 
+  mutate(PrimerGenero = word(genres, 1, sep = ",")) #Añade una nueva columna para usar 
+      #solo el primer género de la pelicula, pues con tres se forman muchas cátegorias
+
+datos_bien <- datos_bien1 |> filter(if_all(everything(), ~ !is.na(.x)))
+
+```
+
+Así, realizamos el analisis de los distintos gráficos de nuetras variables comparadas con `taquilla`
+
+```{r}
+#| echo: false
+#| #| warning: false 
+#| message: false
+ggpairs(datos_bien[, c("taquilla", "runtimeMinutes", "averageRating", "numVotes",
+  "presupuesto", "startYear", "popularity")])
+
+ggplot(data = datos_bien, aes(x = presupuesto, y = taquilla)) + geom_point() + 
+  geom_smooth(method = "lm")#parece haber relación
+
+ggplot(data = datos_bien, aes(x = averageRating, y = taquilla)) + geom_point() + 
+  geom_smooth(method = "lm")#no parece haber relación
+
+ggplot(data = datos_bien, aes(x = runtimeMinutes, y = taquilla)) + geom_point() + 
+  geom_smooth(method = "lm")#no parece haber relación
+
+ggplot(data = datos_bien, aes(x = popularity, y = taquilla)) + geom_point() + 
+  geom_smooth(method = "lm")#parece haber relación
+
+ggplot(data = datos_bien, aes(x = PrimerGenero, y = taquilla)) + geom_boxplot()
+```
+
+Se aprecian coeficientes de correlacion altos de `taquilla` con `popularity` y `numVotes`, tal y como se esperaba , aquí el gráfico que más nos brinda informacion es el `ggpairs` de la libreria `GGally` al brindarnos una vision global de las interacciones de nuestras variables.
+
+Con esta informacion podremos iniciar la creacion de nuestros modelos.
+
+# Parte #3: Creación de los modelos

@@ -113,12 +113,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 </section>
-<section id="parte-1-introduccion-datos-y-objetivo" class="level1">
-<h1>Parte #1: Introduccion, datos y objetivo</h1>
+<section id="parte-1-introduccion-y-datos" class="level1">
+<h1>Parte #1: Introduccion y datos</h1>
 <section id="introducción" class="level2">
 <h2 class="anchored" data-anchor-id="introducción">1.1 Introducción</h2>
 <p>La regresión lineal es una herramienta por la cual se busca hallar modelos que relacionen una variable respuesta con una variable explicativa. La regresion lineal múltiple, en cambio, relaciona más de una variable explicativa a la respuesta, dandole así un mayor potencial de expllicacion al modelo propuesto a cambio de hacer el modelo mas complejo.</p>
 <p>Es así, como la regresion lineal múltiple se entiende como una generalizacion de la regresion lineal simple, una herramienta distinta con usos practicos diferentes a su alternativa de una variable. En este documento académico se usará la regresion linear multiple para adaptar un modelo explicativo, a continuacion se explicaran los objetivos, los datos y el procedimiento a seguir con el cual se realizo la creacion y uso del modelo.</p>
+<p>(El repositorio donde se encuentran todos los distintos archivos y evidencias del proceso puede ser consultado <a href="https://github.com/Sergeometrics/Regresion-Proyectos" target="_blank" rel="noopener noreferrer">aquí</a>)</p>
 </section>
 <section id="tmdb-la-base-de-datos-seleccionada" class="level2">
 <h2 class="anchored" data-anchor-id="tmdb-la-base-de-datos-seleccionada">1.2 TMDb: La base de datos seleccionada</h2>
@@ -207,8 +208,101 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(resultados, <span class="st">"imdb_taquilla_presupuesto.csv"</span>)</span>
 <span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(imdb_final, <span class="st">"imdb_datos_completos.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Finalmente, se solicita a la API aplicar la funcion <code>get_tmdb()</code> a cada identificador <code>tconst</code> y combina las filas devueltas en un solo data frame. así, finalmente la funcion <code>write_csv()</code>guarda los resultados de nuetras consultas en un solo <a href="../imdb_datos_completos.csv" download="">imdb datos completos.csv</a> organizado</p>
+<p>Finalmente, se solicita a la API aplicar la funcion <code>get_tmdb()</code> a cada identificador <code>tconst</code> y combina las filas devueltas en un solo data frame. así, finalmente la funcion <code>write_csv()</code>guarda los resultados de nuetras consultas en un solo <a href="../imdb_datos_completos.csv" download="">imdb datos completos.csv</a> organizado.</p>
 </section>
+<section id="las-variables-y-la-base-de-datos" class="level2">
+<h2 class="anchored" data-anchor-id="las-variables-y-la-base-de-datos">1.4 Las variables y la base de datos</h2>
+<p>Con nuestro csv preparado, podemos empezar con los preliminares de nuestro analisis de regresion, para esto definimos nuestras variables:</p>
+<ol type="1">
+<li><p><code>tconst</code> : variable identificadora única (pk) de las bases de IMDb y TMDb utilidad a la hora de unir ambas bases.</p></li>
+<li><p><code>primaryTitle</code> : Título principal de la película en su idioma original.</p></li>
+<li><p><code>startYear</code> : Año de publicacion de la película.</p></li>
+<li><p><code>runtimeMinutes</code> : Duracion en minutos de la cinta.</p></li>
+<li><p><code>genres</code> : generos de la película, separados por comas.</p></li>
+<li><p><code>averageRating</code> : calificacion promedio de los usuarios.</p></li>
+<li><p><code>nunmVotes</code> : número de usuarios que calificaron la película.</p></li>
+<li><p><code>presupuesto</code> : presupuesto para la realilzazcion de la película en USD.</p></li>
+<li><p><code>taquilla</code> : ingresos de la película en taquilla</p></li>
+<li><p><code>popularity</code> : score calculado diariamente por TMDb que combina la actividad reciente en su plataforma alrededor de la película (no tiene unidades establecidas o públicas, se interpreta como in indicador de las interacciones con la pelicula dada)</p></li>
+</ol>
+</section>
+</section>
+<section id="parte-2-preliminares-hipotesis-y-analisis-exploratorio" class="level1">
+<h1>Parte #2: preliminares, hipotesis y analisis exploratorio</h1>
+<p>Como primera accion tras tener nuestros datos preparados y leer nuestras variables vamos a definir una variable objetivo, en este caso, la variable de interés será <code>taquilla</code> y se intentará adaptar un modelo que explique el comportamiento de esta en base a los demás datos. Preliminarmente se teorizan correlaciones altas de <code>taquilla</code> con variables como <code>popularity</code>, <code>presupuesto</code> y <code>rating</code>.</p>
+<p>Es así que con un objetivo claro, se realizará un analisis exploratorio de nuestras variables, buscando inicialmente relaciones de nuestras otras variables con <code>taquilla</code>.</p>
+<p>El archivo de .r donde se encuentra el codigo entero es: <a href="Modelos_lineales_múltiples.r" download="">Modelos_lineales_múltiples.r</a>, en este mismo documento se explicará mas a fondo el desarrollo del código del archivo adjunto.</p>
+<p>Inicialmente se realizan preliminares del archivo como librerias y lectura/adaptacion de los datos</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mctest)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>imdb_datos_completos  <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../imdb_datos_completos.csv"</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a> <span class="fu">colnames</span>(imdb_datos_completos)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>datos_bien1 <span class="ot">&lt;-</span> imdb_datos_completos <span class="sc">|&gt;</span> </span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">PrimerGenero =</span> <span class="fu">word</span>(genres, <span class="dv">1</span>, <span class="at">sep =</span> <span class="st">","</span>)) <span class="co">#Añade una nueva columna para usar </span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>      <span class="co">#solo el primer género de la pelicula, pues con tres se forman muchas cátegorias</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>datos_bien <span class="ot">&lt;-</span> datos_bien1 <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="fu">if_all</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="sc">!</span><span class="fu">is.na</span>(.x)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Así, realizamos el analisis de los distintos gráficos de nuetras variables comparadas con <code>taquilla</code></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Proyecto1_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Proyecto1_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Proyecto1_files/figure-html/unnamed-chunk-6-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Proyecto1_files/figure-html/unnamed-chunk-6-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Proyecto1_files/figure-html/unnamed-chunk-6-5.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Proyecto1_files/figure-html/unnamed-chunk-6-6.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Se aprecian coeficientes de correlacion altos de <code>taquilla</code> con <code>popularity</code> y <code>numVotes</code>, tal y como se esperaba , aquí el gráfico que más nos brinda informacion es el <code>ggpairs</code> de la libreria <code>GGally</code> al brindarnos una vision global de las interacciones de nuestras variables.</p>
+<p>Con esta informacion podremos iniciar la creacion de nuestros modelos.</p>
+</section>
+<section id="parte-3-creación-de-los-modelos" class="level1">
+<h1>Parte #3: Creación de los modelos</h1>
 </section>
 
 </main>
