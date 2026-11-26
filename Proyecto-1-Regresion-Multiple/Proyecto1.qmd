@@ -1,0 +1,140 @@
+# Regresión lineal multiple
+
+## Universidad Nacional de Colombia
+
+## 2026-2
+
+## integrantes:
+
+#### Ana Lucia Acosta Moreno
+
+#### Sergio Alejandro Buitrago Melo
+
+#### David Camero Pardo
+
+#### Camilo Andres Murcia Perdomo
+
+# Parte #1: Introduccion, datos y objetivo
+
+## 1.1 Introducción
+
+La regresión lineal es una herramienta por la cual se busca hallar modelos que relacionen una variable respuesta con una variable explicativa. La regresion lineal múltiple, en cambio, relaciona más de una variable explicativa a la respuesta, dandole así un mayor potencial de expllicacion al modelo propuesto a cambio de hacer el modelo mas complejo.
+
+Es así, como la regresion lineal múltiple se entiende como una generalizacion de la regresion lineal simple, una herramienta distinta con usos practicos diferentes a su alternativa de una variable. En este documento académico se usará la regresion linear multiple para adaptar un modelo explicativo, a continuacion se explicaran los objetivos, los datos y el procedimiento a seguir con el cual se realizo la creacion y uso del modelo.
+
+## 1.2 TMDb: La base de datos seleccionada
+
+Con el objetivo de crear un ejemplo del uso de la regresion lineal múltiple se busco una base de datos acorde encontrando así las bases de datos abiertas pertenecientes a <a href="https://www.imdb.com" target="_blank" rel="noopener noreferrer">IMDb</a> la popular pagina de rankings de television perteneciente a Amazon y el proyecto abierto de documentacion de peliculas y series de television <a href="https://www.themoviedb.org" target="_blank" rel="noopener noreferrer">The movie database (TMDb)</a> donde se encuentran datos relevantes sobre peliculas, como ingresos de taquilla fechas de estreno y otros datos relevantes.
+
+La obtencion de los datos a usar para el ejercicio acedemico se realiza a traves de <a href="../Setup-Inicial-IMDb.r" download>Setup-Inicial-IMDb.r</a> donde se realizan llamados a ambas fuentes seleccionadas (the movie database solicita la creacion de una API key para solicitar los datos)
+
+## 1.3 API y obtencion de los datos
+
+El archivo <a href="../imdb_datos_completos.csv" download>imdb datos completos.csv</a> no se encuentra publicado para descarga directa por fuera de este repositorio, a continuacion se explica demanera rápida la creacion de este archivo basado en los datos bases descargables de IMDb y TMDb.
+
+La creacion de nuestro csv base que se usará atraves del documento se encuentra en <a href="../Setup-Inicial-IMDb.r" download>Setup-Inicial-IMDb.r</a>. En este documento se encuentran los siguientes comandos
+
+```{r}
+#| eval: false
+
+
+
+#  download.file("https://datasets.imdbws.com/title.basics.tsv.gz", "title.basics.tsv.gz")
+#  download.file("https://datasets.imdbws.com/title.ratings.tsv.gz", "title.ratings.tsv.gz")
+
+#basics  <- read_tsv("title.basics.tsv.gz",  na = "\\N", show_col_types = FALSE)
+#ratings <- read_tsv("title.ratings.tsv.gz", na = "\\N", show_col_types = FALSE)
+
+imdb <- basics %>%
+  filter(titleType == "movie") %>%
+  inner_join(ratings, by = "tconst") %>%
+  select(tconst, primaryTitle, startYear, runtimeMinutes,
+         genres, averageRating, numVotes)
+
+
+```
+
+(Se comentan lineas de código para evitar descargas y objetos repetidos)
+
+Estas lineas nos dan los datos base descargados directamente de IMDb, y los filtra con nuestros individuos de interes, las peliculas.
+
+```{r}
+#| eval: false
+
+set.seed(123)   # reproducible sample
+imdb_muestra <- imdb %>%
+  filter(numVotes > 500, !is.na(runtimeMinutes)) %>%
+  slice_sample(n = 5000)
+```
+
+Se filtra una muestra de 5000 películas con más de 500 votos y duración conocida.
+
+Para las bases de datos de TMDb se solicita una API en su <a href="https://developer.themoviedb.org/docs/getting-started" target="_blank" rel="noopener noreferrer">sitio óficial</a> y se define la variable en la consola corriendo:
+
+``` r
+
+ api_key <- "ACA QUI VA LA API KEY DE TMDB" #(correr en consola y no publicar API de uso personal)
+```
+
+Despues de esto realilzamos las solicitudes a la base de datos creando la siguiente función:
+
+```{r}
+#| eval: false
+  get_tmdb <- function(tconst, api_key) {
+  out <- tibble(tconst = tconst,
+                presupuesto = NA_real_,
+                taquilla    = NA_real_,
+                popularity  = NA_real_)
+  tryCatch({
+    
+    resp <- request("https://api.themoviedb.org/3/find/") |>
+      req_url_path_append(tconst) |>
+      req_url_query(api_key = api_key, external_source = "imdb_id") |>
+      req_retry(max_tries = 3) |>
+      req_perform()
+
+    res <- resp_body_json(resp)$movie_results
+    if (length(res) > 0) {
+      out$popularity <- res[[1]]$popularity
+      id <- res[[1]]$id
+
+      det <- request("https://api.themoviedb.org/3/movie/") |>
+        req_url_path_append(as.character(id)) |>
+        req_url_query(api_key = api_key) |>
+        req_retry(max_tries = 3) |>
+        req_perform()
+      d <- resp_body_json(det)
+
+      out$presupuesto <- ifelse(is.null(d$budget)  || d$budget  == 0, NA_real_, d$budget)
+      out$taquilla    <- ifelse(is.null(d$revenue) || d$revenue == 0, NA_real_, d$revenue)
+    }
+  }, error = function(e) NULL)
+  out
+}
+```
+
+La función `get_tmdb(tconst, api_key)` recibe un identificador de IMDb y una clave de TMDb. Primero crea una fila con los valores que espera obtener, luego hace dos solicitudes a la API:
+
+Busca la película en TMDb a partir del identificador IMDb, con `external_source = "imdb_id"`. Si encuentra resultados, toma la popularidad y el ID de TMDb; con ese ID solicita los detalles, donde están el presupuesto `(budget)` y los ingresos `(revenue)`. `req_retry(max_tries = 3)` permite reintentar una solicitud fallida hasta tres veces. Si TMDb devuelve presupuesto o ingresos iguales a cero, el código los convierte en `NA`. (Comando adaptado y sacado de la documentacion oficial de TMDb <a href="https://developer.themoviedb.org/docs/getting-started" target="_blank" rel="noopener noreferrer">Documentación óficial</a>)
+
+```{r}
+#| eval: false
+resultados <- map_dfr(imdb_muestra$tconst,
+                      get_tmdb,
+                      api_key = api_key,
+                      .progress = TRUE)
+
+imdb_final <- imdb_muestra %>%
+  left_join(resultados, by = "tconst") %>%
+  filter(!is.na(presupuesto)) %>%
+  mutate(log_presupuesto = log(presupuesto),
+         log_taquilla    = log(taquilla))
+
+nrow(imdb_final)   
+
+write_csv(resultados, "imdb_taquilla_presupuesto.csv")
+write_csv(imdb_final, "imdb_datos_completos.csv")
+
+```
+
+Finalmente, se solicita a la API aplicar la funcion `get_tmdb()` a cada identificador `tconst` y combina las filas devueltas en un solo data frame. así, finalmente la funcion `write_csv()`guarda los resultados de nuetras consultas en un solo <a href="../imdb_datos_completos.csv" download>imdb datos completos.csv</a> organizado
