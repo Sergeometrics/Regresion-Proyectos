@@ -10,12 +10,13 @@ View(imdb_datos_completos)
 
 colnames(imdb_datos_completos)
 
-datos_bien1 <- imdb_datos_completos |> 
-  mutate(PrimerGenero = word(genres, 1, sep = ",")) #Añade una nueva columna para usar 
-      #solo el primer género de la pelicula, pues con tres se forman muchas cátegorias
+datos_bien <- imdb_datos_completos |> 
+  mutate(
+    #Añade una nueva columna para usar 
+      #solo el primer género de la pelicula, pues con tres se forman muchas cátegorias 
+    PrimerGenero = word(genres, 1, sep = ",")) |> 
+  filter(if_all(everything(), ~ !is.na(.x))) 
 View(datos_bien)
-
-datos_bien <- datos_bien1 |> filter(if_all(everything(), ~ !is.na(.x)))
 
 pairs(datos_bien[, c("taquilla", "runtimeMinutes", "averageRating", "numVotes",
   "presupuesto", "startYear", "popularity")], cex.labels = 2)
@@ -74,48 +75,75 @@ ggplot(data = datos_m2, aes(y = residuales2Alternos, x = startYear*presupuesto))
   geom_smooth(method = "lm") #la línea parece horizontal, no parece haber relación
 ggplot(data = datos_m2, aes(y = residuales2Alternos, x = startYear)) + geom_point() +
   geom_smooth(method = "lm") #la línea parece horizontal, no parece haber relación
+ggplot(data = datos_m2, aes(y = residuales2Alternos, x = startYear)) + geom_point()
+
+
 
 modelo3 <- update(modelo2_alternativo, . ~ . + startYear:presupuesto)
 summary(modelo3) 
 
 AIC(modelo2_alternativo)
-AIC(modelo3) #Mejor pero no estoy del todo seguro por el análisis visual
+AIC(modelo3) #Mejor pero no estoy del todo seguro de añadir startYear:presupuesto 
+#por la colinealidad con presupuesto
+
 
 datos_m3 <- datos_m2 |> mutate(residuales3 = modelo3$residuals)
 
 ggplot(data = datos_m3, aes(y = residuales3, x = startYear)) + geom_point() +
   geom_smooth(method = "lm")
 
-modelo3_alterno <- update(modelo3, .~. +startYear)
-summary(modelo3_alterno)
+modelo4 <- update(modelo3, .~. +startYear)
+summary(modelo4)
 
 ##Revisión multicolinealidad
-omcdiag(modelo3_alterno)
-imcdiag(modelo3_alterno)
-car::vif(modelo3_alterno) 
-#presupuesto y presupuesto:startYear son colineales, entonces usaré el modelo3
+omcdiag(modelo4)
+imcdiag(modelo4)
+car::vif(modelo4) 
+#presupuesto y presupuesto:startYear son colineales, entonces eliminaré la variable interactiva
 
-modelo4 <- update(modelo3, . ~ . + averageRating)
-summary(modelo4) #Va mejorando (estoy mirando el R cuadrado ajustado, nada más)
+modelo4_alterno <- update(modelo3, ~. +averageRating)
+summary(modelo4_alterno)
 
-datos_m4 <- datos_m2 |> mutate(residuales = modelo4$residuals)
+modelo5 <- update(modelo4, . ~ . -startYear:presupuesto + averageRating)
+summary(modelo5) #Peor que modelo4_alterno
+
+datos_m4 <- datos_m4 |> mutate(residuales = modelo4$residuals)
+datos_m4_a <- datos_m3 |> mutate(residuales4_a = modelo4_alterno$residuals)
 
 ggplot(data = datos_m4, aes(y = residuales, x = averageRating*numVotes)) + geom_point()
 
-modelo4_alterno <- update(modelo3, . ~ . - presupuesto:startYear + startYear)
-summary(modelo4_alterno) #Quería ver qué pasaba si usaba solo el starYear, 
-#pues las gráficas con los residuales parecían iguales y 
-# #resultó que es mejor la interacción
+ggplot(data = datos_m4_a, aes(y = residuales4_a, x = averageRating*numVotes)) + geom_point() +
+  geom_smooth(method = "lm")
+ggplot(data = datos_m4_a, aes(y = residuales4_a, x = numVotes)) + geom_point() +
+  geom_smooth(method = "lm")
 
-modelo5 <- update(modelo4, .~. +startYear)
-summary(modelo5)
+
+modelo5_alterno <- update(modelo4_alterno, .~. + numVotes)
+summary(modelo5_alterno)
 
 ##Revisión multicolinealidad
-omcdiag(modelo5)
-imcdiag(modelo5)
-car::vif(modelo5) 
+omcdiag(modelo5_alterno)
+imcdiag(modelo5_alterno)
+car::vif(modelo5_alterno) 
 #Refuerza que hay colinealidad entre presupuesto y presupueto:startYear, 
 #pero no entiendo por qué ambos betas aparecen altamente significativos
+
+modelo6_alterno <- update(modelo5_alterno, .~. - presupuesto:startYear)
+summary(modelo6_alterno)
+
+##Revisión multicolinealidad
+omcdiag(modelo6_alterno)
+imcdiag(modelo6_alterno)
+car::vif(modelo6_alterno) 
+
+datos_m6_a <- datos_m4_a |> mutate(residuales6_a = modelo6_alterno$residuals)
+
+ggplot(data = datos_m6_a, aes(y = residuales6_a, x = numVotes^2)) + geom_point() +
+  geom_smooth(method = "lm") # Tal vez
+ggplot(data = datos_m6_a, aes(y = residuales6_a, x = log(numVotes))) + geom_point() +
+  geom_smooth(method = "lm") # No parece
+ggplot(data = datos_m6_a, aes(y = residuales6_a, x = exp(popularity))) + geom_point() +
+  geom_smooth(method = "lm") # No parece haber relación alguna con transformaciones de popularidad
 
 ##Modelo optimizado por AIC
 modelo_full <- lm(taquilla ~ (runtimeMinutes + averageRating + numVotes + presupuesto + 
@@ -125,5 +153,15 @@ summary(modelo_full)
 modelo_optimizado <- step(modelo_full)
 summary(modelo_optimizado)
 
-AIC(modelo5)
+AIC(modelo6_alterno)
 AIC(modelo_optimizado)
+AIC(modelo6_alterno) - AIC(modelo_optimizado)
+
+BIC(modelo6_alterno)
+BIC(modelo_optimizado)
+BIC(modelo6_alterno) - BIC(modelo_optimizado)
+
+summary(modelo6_alterno)
+summary(modelo_optimizado)
+
+#Hay diferencias a tener en cuenta con el AIC y el BIC
