@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.11.9">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -67,24 +67,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="Proyecto1_files/libs/clipboard/clipboard.min.js"></script>
 <script src="Proyecto1_files/libs/quarto-html/quarto.js" type="module"></script>
 <script src="Proyecto1_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="Proyecto1_files/libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="Proyecto1_files/libs/quarto-html/popper.min.js"></script>
 <script src="Proyecto1_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="Proyecto1_files/libs/quarto-html/anchor.min.js"></script>
 <link href="Proyecto1_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="Proyecto1_files/libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="Proyecto1_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="Proyecto1_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="Proyecto1_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="Proyecto1_files/libs/bootstrap/bootstrap-943e08653f4bd8ac7ab9292bfc489267.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="Proyecto1_files/libs/bootstrap/bootstrap-4efa5a77664b5d5f81c144e9b61531e9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
-<body class="fullcontent quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+<body class="fullcontent quarto-light">
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
 
-<main class="content" id="quarto-document-content" tabindex="-1">
+<main class="content" id="quarto-document-content">
 
 
 
@@ -117,7 +145,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Parte #1: Introduccion y datos</h1>
 <section id="introducción" class="level2">
 <h2 class="anchored" data-anchor-id="introducción">1.1 Introducción</h2>
-<p>La regresión lineal es una herramienta por la cual se busca hallar modelos que relacionen una variable respuesta con una variable explicativa. La regresion lineal múltiple, en cambio, relaciona más de una variable explicativa a la respuesta, dandole así un mayor potencial de expllicacion al modelo propuesto a cambio de hacer el modelo mas complejo.</p>
+<p>La regresión lineal es una herramienta con la cual se busca hallar modelos que relacionen una variable respuesta con una variable explicativa. La regresion lineal <strong>múltiple</strong>, en cambio, relaciona más de una variable explicativa a la respuesta, dandole así un mayor potencial de explicacion al modelo propuesto a cambio de hacerlo mas complejo.</p>
 <p>Es así, como la regresion lineal múltiple se entiende como una generalizacion de la regresion lineal simple, una herramienta distinta con usos practicos diferentes a su alternativa de una variable. En este documento académico se usará la regresion linear multiple para adaptar un modelo explicativo, a continuacion se explicaran los objetivos, los datos y el procedimiento a seguir con el cual se realizo la creacion y uso del modelo.</p>
 <p>(El repositorio donde se encuentran todos los distintos archivos y evidencias del proceso puede ser consultado <a href="https://github.com/Sergeometrics/Regresion-Proyectos" target="_blank" rel="noopener noreferrer">aquí</a>)</p>
 </section>
@@ -303,6 +331,1247 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="parte-3-creación-de-los-modelos" class="level1">
 <h1>Parte #3: Creación de los modelos</h1>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|echo: false</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(datos_bien)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Como objetivo principal del documento se explorarà la creacion de modelos acordes a nuestra base de datos, es asì que se exploraràn distintas alternativas y se evaluaràn los fuertes de estos.</p>
+<p>Iniciamos con el primer par de modelos definidos como:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>modelo1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(taquilla <span class="sc">~</span> presupuesto <span class="sc">+</span> runtimeMinutes <span class="sc">+</span> popularity)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo1) <span class="co">#Modelo inicial</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = taquilla ~ presupuesto + runtimeMinutes + popularity)
+
+Residuals:
+       Min         1Q     Median         3Q        Max 
+-516304971  -22093829    1698558   12455834 1010750468 
+
+Coefficients:
+                 Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)    -3.146e+07  1.687e+07  -1.865   0.0626 .  
+presupuesto     2.567e+00  8.683e-02  29.569  &lt; 2e-16 ***
+runtimeMinutes  1.658e+05  1.510e+05   1.098   0.2726    
+popularity      2.780e+06  5.684e+05   4.891  1.2e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 91720000 on 845 degrees of freedom
+Multiple R-squared:  0.5738,    Adjusted R-squared:  0.5723 
+F-statistic: 379.2 on 3 and 845 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>modelo1_alterno <span class="ot">&lt;-</span> <span class="fu">lm</span>(taquilla <span class="sc">~</span> presupuesto <span class="sc">+</span> popularity <span class="sc">+</span> PrimerGenero)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo1_alterno) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = taquilla ~ presupuesto + popularity + PrimerGenero)
+
+Residuals:
+       Min         1Q     Median         3Q        Max 
+-513886533  -21360965    1141640   14367431 1019777451 
+
+Coefficients:
+                          Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)             -2.076e+07  7.398e+06  -2.806  0.00513 ** 
+presupuesto              2.582e+00  9.119e-02  28.321  &lt; 2e-16 ***
+popularity               2.794e+06  5.828e+05   4.795 1.93e-06 ***
+PrimerGeneroAdult        3.550e+07  9.219e+07   0.385  0.70030    
+PrimerGeneroAdventure    1.801e+07  1.199e+07   1.502  0.13354    
+PrimerGeneroAnimation    3.932e+07  3.544e+07   1.109  0.26756    
+PrimerGeneroBiography    6.546e+06  1.424e+07   0.460  0.64594    
+PrimerGeneroComedy       1.019e+07  9.038e+06   1.127  0.25993    
+PrimerGeneroCrime        7.465e+06  1.271e+07   0.587  0.55732    
+PrimerGeneroDocumentary -7.046e+05  3.321e+07  -0.021  0.98308    
+PrimerGeneroDrama        9.800e+05  1.032e+07   0.095  0.92438    
+PrimerGeneroFantasy     -2.618e+07  5.411e+07  -0.484  0.62859    
+PrimerGeneroFilm-Noir    1.410e+07  9.217e+07   0.153  0.87847    
+PrimerGeneroHorror       2.065e+07  1.783e+07   1.158  0.24722    
+PrimerGeneroMusical      1.871e+07  9.218e+07   0.203  0.83923    
+PrimerGeneroMystery      1.493e+08  5.343e+07   2.794  0.00533 ** 
+PrimerGeneroRomance      1.932e+07  6.539e+07   0.295  0.76771    
+PrimerGeneroSci-Fi      -3.024e+07  6.531e+07  -0.463  0.64346    
+PrimerGeneroWestern      8.858e+06  9.218e+07   0.096  0.92348    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 91890000 on 830 degrees of freedom
+Multiple R-squared:  0.5798,    Adjusted R-squared:  0.5706 
+F-statistic: 63.62 on 18 and 830 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>Estos modelos son basados en las variables con mayores relaciones a nuestra variable objetivo <code>taquilla</code>. este se toma como punto inicial y base de la creacion manual de otros modelos.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>datos_m1 <span class="ot">&lt;-</span> datos_bien <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">residuales1 =</span> modelo1<span class="sc">$</span>residuals)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos_m1, <span class="fu">aes</span>(<span class="at">y =</span> residuales1, <span class="at">x =</span> numVotes)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Proyecto1_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Tras realizar el examen de los residuales, se agrega <code>numVotes</code> como otra variable y se retirò <code>RuntimeMinutes</code>. Creando asì nuestro segundo modelo.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>modelo2 <span class="ot">&lt;-</span> <span class="fu">update</span>(modelo1, . <span class="sc">~</span> . <span class="sc">-</span> runtimeMinutes <span class="sc">+</span> numVotes)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo2) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = taquilla ~ presupuesto + popularity + numVotes)
+
+Residuals:
+       Min         1Q     Median         3Q        Max 
+-430629435  -18888333    4642257   15353477  997969587 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -1.632e+07  3.452e+06  -4.729 2.65e-06 ***
+presupuesto  1.919e+00  8.399e-02  22.846  &lt; 2e-16 ***
+popularity   1.682e+05  5.158e+05   0.326    0.744    
+numVotes     3.749e+02  2.222e+01  16.871  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 79380000 on 845 degrees of freedom
+Multiple R-squared:  0.6807,    Adjusted R-squared:  0.6796 
+F-statistic: 600.6 on 3 and 845 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">omcdiag</span>(modelo2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+omcdiag(mod = modelo2)
+
+
+Overall Multicollinearity Diagnostics
+
+                       MC Results detection
+Determinant |X'X|:         0.5853         0
+Farrar Chi-Square:       453.1707         1
+Red Indicator:             0.4292         0
+Sum of Lambda Inverse:     4.1813         0
+Theil's Method:           -0.5339         0
+Condition Number:          2.8261         0
+
+1 --&gt; COLLINEARITY is detected by the test 
+0 --&gt; COLLINEARITY is not detected by the test</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">imcdiag</span>(modelo2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+imcdiag(mod = modelo2)
+
+
+All Individual Multicollinearity Diagnostics Result
+
+               VIF    TOL       Wi       Fi Leamer    CVIF Klein   IND1   IND2
+presupuesto 1.4215 0.7035 178.3153 357.0522 0.8387 -2.8976     0 0.0017 1.0750
+popularity  1.2207 0.8192  93.3386 186.8978 0.9051 -2.4881     0 0.0019 0.6553
+numVotes    1.5391 0.6497 228.0318 456.6028 0.8061 -3.1371     0 0.0015 1.2697
+
+1 --&gt; COLLINEARITY is detected by the test 
+0 --&gt; COLLINEARITY is not detected by the test
+
+popularity , coefficient(s) are non-significant may be due to multicollinearity
+
+R-square of y on all x: 0.6807 
+
+* use method argument to check which regressors may be the reason of collinearity
+===================================</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">vif</span>(modelo2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>presupuesto  popularity    numVotes 
+   1.421549    1.220659    1.539082 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>modelo2_alternativo <span class="ot">&lt;-</span> <span class="fu">update</span>(modelo1, .<span class="sc">~</span>. <span class="sc">-</span>runtimeMinutes)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo2_alternativo)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = taquilla ~ presupuesto + popularity)
+
+Residuals:
+       Min         1Q     Median         3Q        Max 
+-521081261  -21822028    1751641   11802771 1012560528 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -1.346e+07  3.984e+06  -3.380 0.000759 ***
+presupuesto  2.582e+00  8.577e-02  30.109  &lt; 2e-16 ***
+popularity   2.788e+06  5.684e+05   4.906 1.12e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 91730000 on 846 degrees of freedom
+Multiple R-squared:  0.5732,    Adjusted R-squared:  0.5722 
+F-statistic: 568.1 on 2 and 846 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>Este segundo modelo retira <code>runtimeMinutes</code> e incorpora <code>numVotes</code> (solo en <code>modelo2</code> no en <code>modelo2_alternativo</code>), el cual tras realizar comprobaciones de colinealidad dan indicaciones de ser colineales (Esta relacion es entendible pues entre mas gente interactua con la pàgina de la pelìcula dada la misma obtendra mas calificaciones).</p>
+<p>Se realizan los siguientes gràficos para la comprobacion de los residuales con otras variables:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Proyecto1_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Proyecto1_files/figure-html/unnamed-chunk-12-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Proyecto1_files/figure-html/unnamed-chunk-12-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Proyecto1_files/figure-html/unnamed-chunk-12-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Tras analisar estos datos se llega a un modelo nùmero 3, donde se adapta nuestro <code>modelo2_alternativo</code> y se le agregarà la relacion <code>startYear:presupuesto</code></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>modelo3 <span class="ot">&lt;-</span> <span class="fu">update</span>(modelo2_alternativo, . <span class="sc">~</span> . <span class="sc">+</span> startYear<span class="sc">:</span>presupuesto)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo3) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = taquilla ~ presupuesto + popularity + presupuesto:startYear)
+
+Residuals:
+       Min         1Q     Median         3Q        Max 
+-439619812  -22905666    3806803   14626746 1023791842 
+
+Coefficients:
+                        Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)           -1.740e+07  4.092e+06  -4.253 2.34e-05 ***
+presupuesto            6.384e+01  1.638e+01   3.898 0.000105 ***
+popularity             2.833e+06  5.642e+05   5.021 6.26e-07 ***
+presupuesto:startYear -3.042e-02  8.134e-03  -3.740 0.000196 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 91030000 on 845 degrees of freedom
+Multiple R-squared:  0.5802,    Adjusted R-squared:  0.5787 
+F-statistic: 389.2 on 3 and 845 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modelo2_alternativo)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 33546.06</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modelo3) <span class="co">#Mejor pero no estoy del todo seguro por el análisis visual</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 33534.12</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>datos_m3 <span class="ot">&lt;-</span> datos_m2 <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">residuales3 =</span> modelo3<span class="sc">$</span>residuals)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos_m3, <span class="fu">aes</span>(<span class="at">y =</span> residuales3, <span class="at">x =</span> startYear)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Proyecto1_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>modelo3_alterno <span class="ot">&lt;-</span> <span class="fu">update</span>(modelo3, .<span class="sc">~</span>. <span class="sc">+</span>startYear)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo3_alterno)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = taquilla ~ presupuesto + popularity + startYear + 
+    presupuesto:startYear)
+
+Residuals:
+       Min         1Q     Median         3Q        Max 
+-449578194  -22818682    1951895   15429837 1021468315 
+
+Coefficients:
+                        Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)            3.828e+08  3.458e+08   1.107 0.268609    
+presupuesto            5.750e+01  1.727e+01   3.330 0.000905 ***
+popularity             2.877e+06  5.654e+05   5.088 4.46e-07 ***
+startYear             -2.001e+05  1.729e+05  -1.157 0.247432    
+presupuesto:startYear -2.726e-02  8.578e-03  -3.178 0.001535 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 91010000 on 844 degrees of freedom
+Multiple R-squared:  0.5808,    Adjusted R-squared:  0.5788 
+F-statistic: 292.4 on 4 and 844 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>De nuevo, se realizan verificaciones de colinealidad:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">omcdiag</span>(modelo3_alterno)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+omcdiag(mod = modelo3_alterno)
+
+
+Overall Multicollinearity Diagnostics
+
+                       MC Results detection
+Determinant |X'X|:         0.0000         1
+Farrar Chi-Square:      9217.6615         1
+Red Indicator:             0.4709         0
+Sum of Lambda Inverse: 91437.5431         1
+Theil's Method:            0.5168         1
+Condition Number:        680.5304         1
+
+1 --&gt; COLLINEARITY is detected by the test 
+0 --&gt; COLLINEARITY is not detected by the test</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">imcdiag</span>(modelo3_alterno)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+imcdiag(mod = modelo3_alterno)
+
+
+All Individual Multicollinearity Diagnostics Result
+
+                             VIF    TOL           Wi           Fi Leamer
+presupuesto           45700.1668 0.0000 1.287193e+07 1.933075e+07 0.0047
+popularity                1.1154 0.8965 3.250970e+01 4.882220e+01 0.9468
+startYear                 1.1846 0.8442 5.199280e+01 7.808140e+01 0.9188
+presupuesto:startYear 45735.0763 0.0000 1.288176e+07 1.934551e+07 0.0047
+                             CVIF Klein   IND1   IND2
+presupuesto           -74892.9656     1 0.0000 1.7705
+popularity                -1.8279     0 0.0032 0.1832
+startYear                 -1.9413     0 0.0030 0.2759
+presupuesto:startYear -74950.1750     1 0.0000 1.7705
+
+1 --&gt; COLLINEARITY is detected by the test 
+0 --&gt; COLLINEARITY is not detected by the test
+
+startYear , coefficient(s) are non-significant may be due to multicollinearity
+
+R-square of y on all x: 0.5808 
+
+* use method argument to check which regressors may be the reason of collinearity
+===================================</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">vif</span>(modelo3_alterno)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>there are higher-order terms (interactions) in this model
+consider setting type = 'predictor'; see ?vif</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          presupuesto            popularity             startYear 
+         45700.166791              1.115419              1.184590 
+presupuesto:startYear 
+         45735.076287 </code></pre>
+</div>
+</div>
+<p>Con las cuales identificamos colinealidad entre presupuesto:startYear y presupuesto, la cual se agregò como prueba en <code>modelo3_alternativo</code></p>
+<p>Se decide crear un cuarto modelo añadiendo el <code>averageRating</code></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>modelo4 <span class="ot">&lt;-</span> <span class="fu">update</span>(modelo3, . <span class="sc">~</span> . <span class="sc">+</span> averageRating)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo4)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = taquilla ~ presupuesto + popularity + averageRating + 
+    presupuesto:startYear)
+
+Residuals:
+       Min         1Q     Median         3Q        Max 
+-429961888  -24098295    -848111   17095691 1014564612 
+
+Coefficients:
+                        Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)           -1.022e+08  1.945e+07  -5.253 1.90e-07 ***
+presupuesto            6.014e+01  1.622e+01   3.707 0.000223 ***
+popularity             2.532e+06  5.621e+05   4.505 7.58e-06 ***
+averageRating          1.346e+07  3.021e+06   4.455 9.50e-06 ***
+presupuesto:startYear -2.858e-02  8.055e-03  -3.548 0.000410 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 90030000 on 844 degrees of freedom
+Multiple R-squared:  0.5898,    Adjusted R-squared:  0.5879 
+F-statistic: 303.4 on 4 and 844 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>modelo4_alterno <span class="ot">&lt;-</span> <span class="fu">update</span>(modelo3, . <span class="sc">~</span> . <span class="sc">-</span> presupuesto<span class="sc">:</span>startYear <span class="sc">+</span> startYear)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo4_alterno)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = taquilla ~ presupuesto + popularity + startYear)
+
+Residuals:
+       Min         1Q     Median         3Q        Max 
+-523896047  -21306269    -853475   14447245 1010391654 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  7.355e+08  3.292e+08   2.234   0.0258 *  
+presupuesto  2.623e+00  8.743e-02  30.005  &lt; 2e-16 ***
+popularity   2.878e+06  5.684e+05   5.064 5.04e-07 ***
+startYear   -3.749e+05  1.648e+05  -2.275   0.0232 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 91500000 on 845 degrees of freedom
+Multiple R-squared:  0.5758,    Adjusted R-squared:  0.5743 
+F-statistic: 382.3 on 3 and 845 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|echo: false</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="co">#|message: false</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>datos_m4 <span class="ot">&lt;-</span> datos_m2 <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">residuales =</span> modelo4<span class="sc">$</span>residuals)</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos_m4, <span class="fu">aes</span>(<span class="at">y =</span> residuales, <span class="at">x =</span> averageRating<span class="sc">*</span>numVotes)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Proyecto1_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Este cuarto modelo presenta mejoras en nuestro <span class="math inline">\(R²_{adj}\)</span>, se adaptarà un quinto modelo probando la inclusion de <code>startYear</code></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>modelo5 <span class="ot">&lt;-</span> <span class="fu">update</span>(modelo4, .<span class="sc">~</span>. <span class="sc">+</span>startYear)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = taquilla ~ presupuesto + popularity + averageRating + 
+    startYear + presupuesto:startYear)
+
+Residuals:
+       Min         1Q     Median         3Q        Max 
+-434826886  -23623130    -885222   17183905 1013630301 
+
+Coefficients:
+                        Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)            8.803e+07  3.489e+08   0.252  0.80087    
+presupuesto            5.721e+01  1.709e+01   3.348  0.00085 ***
+popularity             2.558e+06  5.643e+05   4.533 6.67e-06 ***
+averageRating          1.322e+07  3.053e+06   4.332 1.66e-05 ***
+startYear             -9.436e+04  1.728e+05  -0.546  0.58522    
+presupuesto:startYear -2.712e-02  8.489e-03  -3.195  0.00145 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 90070000 on 843 degrees of freedom
+Multiple R-squared:  0.5899,    Adjusted R-squared:  0.5875 
+F-statistic: 242.6 on 5 and 843 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="do">##Revisión multicolinealidad</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">omcdiag</span>(modelo5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+omcdiag(mod = modelo5)
+
+
+Overall Multicollinearity Diagnostics
+
+                       MC Results detection
+Determinant |X'X|:         0.0000         1
+Farrar Chi-Square:      9246.0491         1
+Red Indicator:             0.3693         0
+Sum of Lambda Inverse: 91439.9831         1
+Theil's Method:           -0.0313         0
+Condition Number:        754.3094         1
+
+1 --&gt; COLLINEARITY is detected by the test 
+0 --&gt; COLLINEARITY is not detected by the test</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">imcdiag</span>(modelo5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+imcdiag(mod = modelo5)
+
+
+All Individual Multicollinearity Diagnostics Result
+
+                             VIF    TOL           Wi           Fi Leamer
+presupuesto           45700.8643 0.0000 9642671.3632 1.287213e+07 0.0047
+popularity                1.1347 0.8813      28.4218 3.794070e+01 0.9388
+averageRating             1.0386 0.9628       8.1441 1.087160e+01 0.9812
+startYear                 1.2087 0.8273      44.0361 5.878440e+01 0.9096
+presupuesto:startYear 45735.7368 0.0000 9650029.4732 1.288195e+07 0.0047
+                             CVIF Klein   IND1   IND2
+presupuesto           -68305.9517     1 0.0000 2.1473
+popularity                -1.6960     0 0.0042 0.2549
+averageRating             -1.5523     0 0.0046 0.0798
+startYear                 -1.8066     0 0.0039 0.3708
+presupuesto:startYear -68358.0734     1 0.0000 2.1473
+
+1 --&gt; COLLINEARITY is detected by the test 
+0 --&gt; COLLINEARITY is not detected by the test
+
+startYear , coefficient(s) are non-significant may be due to multicollinearity
+
+R-square of y on all x: 0.5899 
+
+* use method argument to check which regressors may be the reason of collinearity
+===================================</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">vif</span>(modelo5) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>there are higher-order terms (interactions) in this model
+consider setting type = 'predictor'; see ?vif</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          presupuesto            popularity         averageRating 
+         45700.864280              1.134701              1.038597 
+            startYear presupuesto:startYear 
+             1.208702          45735.736839 </code></pre>
+</div>
+</div>
+<section id="modelo-optimizado-funcion-step" class="level3">
+<h3 class="anchored" data-anchor-id="modelo-optimizado-funcion-step">Modelo optimizado, Funcion <code>step()</code></h3>
+<p>A la par de la creacion manual de nuestros modelos y llegar a nuestro modelo deseado tambien se aplicarà la funcion <code>step()</code> con el objetivo de crear un modelo optimizado de manera automàtica.</p>
+<p>Para esto se define en primer lugar nuestro modelo “full”</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|output: false</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="co">#|eval: false</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>modelo_full <span class="ot">&lt;-</span> <span class="fu">lm</span>(taquilla <span class="sc">~</span> (runtimeMinutes <span class="sc">+</span> averageRating <span class="sc">+</span> numVotes <span class="sc">+</span> presupuesto <span class="sc">+</span> </span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>  startYear <span class="sc">+</span> popularity <span class="sc">+</span> PrimerGenero)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_full)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = taquilla ~ (runtimeMinutes + averageRating + numVotes + 
+    presupuesto + startYear + popularity + PrimerGenero)^2)
+
+Residuals:
+       Min         1Q     Median         3Q        Max 
+-330422295  -16244295    -639993   11762499  953364975 
+
+Coefficients: (42 not defined because of singularities)
+                                         Estimate Std. Error t value Pr(&gt;|t|)
+(Intercept)                             3.809e+09  2.388e+09   1.595 0.111025
+runtimeMinutes                          2.130e+07  1.396e+07   1.526 0.127370
+averageRating                          -8.369e+08  3.787e+08  -2.210 0.027420
+numVotes                                2.130e+04  6.811e+03   3.127 0.001833
+presupuesto                            -1.295e+01  1.959e+01  -0.661 0.508963
+startYear                              -1.893e+06  1.192e+06  -1.587 0.112819
+popularity                             -3.988e+08  1.888e+08  -2.112 0.035011
+PrimerGeneroAdult                       3.214e+07  7.429e+07   0.433 0.665430
+PrimerGeneroAdventure                   9.351e+07  1.304e+09   0.072 0.942838
+PrimerGeneroAnimation                  -1.227e+09  2.610e+10  -0.047 0.962513
+PrimerGeneroBiography                   7.195e+08  1.409e+09   0.511 0.609629
+PrimerGeneroComedy                     -2.927e+08  8.665e+08  -0.338 0.735630
+PrimerGeneroCrime                       6.600e+08  1.156e+09   0.571 0.568333
+PrimerGeneroDocumentary                 3.055e+09  1.299e+10   0.235 0.814156
+PrimerGeneroDrama                       5.107e+08  9.421e+08   0.542 0.587944
+PrimerGeneroFantasy                    -3.564e+08  1.141e+09  -0.312 0.754821
+PrimerGeneroFilm-Noir                  -2.200e+06  7.473e+07  -0.029 0.976527
+PrimerGeneroHorror                     -2.096e+09  1.736e+09  -1.207 0.227798
+PrimerGeneroMusical                     2.228e+07  7.564e+07   0.294 0.768462
+PrimerGeneroMystery                     1.091e+09  1.416e+09   0.770 0.441358
+PrimerGeneroRomance                     1.739e+07  6.770e+08   0.026 0.979517
+PrimerGeneroSci-Fi                      1.643e+08  5.730e+08   0.287 0.774459
+PrimerGeneroWestern                     3.981e+06  7.614e+07   0.052 0.958319
+runtimeMinutes:averageRating            8.445e+04  1.339e+05   0.631 0.528470
+runtimeMinutes:numVotes                -6.190e+00  1.723e+00  -3.593 0.000348
+runtimeMinutes:presupuesto              2.704e-02  4.341e-03   6.229 7.78e-10
+runtimeMinutes:startYear               -1.064e+04  6.890e+03  -1.545 0.122803
+runtimeMinutes:popularity              -8.192e+04  8.617e+04  -0.951 0.342033
+runtimeMinutes:PrimerGeneroAdult               NA         NA      NA       NA
+runtimeMinutes:PrimerGeneroAdventure   -5.396e+05  5.417e+05  -0.996 0.319458
+runtimeMinutes:PrimerGeneroAnimation   -1.459e+06  1.132e+07  -0.129 0.897504
+runtimeMinutes:PrimerGeneroBiography   -7.152e+05  6.819e+05  -1.049 0.294566
+runtimeMinutes:PrimerGeneroComedy      -6.120e+04  4.091e+05  -0.150 0.881129
+runtimeMinutes:PrimerGeneroCrime       -1.794e+05  6.378e+05  -0.281 0.778641
+runtimeMinutes:PrimerGeneroDocumentary -6.844e+05  3.151e+06  -0.217 0.828108
+runtimeMinutes:PrimerGeneroDrama       -6.372e+05  4.332e+05  -1.471 0.141795
+runtimeMinutes:PrimerGeneroFantasy      1.004e+07  1.149e+07   0.874 0.382558
+runtimeMinutes:PrimerGeneroFilm-Noir           NA         NA      NA       NA
+runtimeMinutes:PrimerGeneroHorror      -1.326e+06  1.047e+06  -1.267 0.205651
+runtimeMinutes:PrimerGeneroMusical             NA         NA      NA       NA
+runtimeMinutes:PrimerGeneroMystery      1.090e+07  5.097e+06   2.139 0.032743
+runtimeMinutes:PrimerGeneroRomance     -2.242e+05  4.683e+06  -0.048 0.961824
+runtimeMinutes:PrimerGeneroSci-Fi      -1.832e+06  5.703e+06  -0.321 0.748113
+runtimeMinutes:PrimerGeneroWestern             NA         NA      NA       NA
+averageRating:numVotes                 -4.827e+01  5.586e+01  -0.864 0.387795
+averageRating:presupuesto               1.228e-01  1.252e-01   0.981 0.327102
+averageRating:startYear                 4.118e+05  1.896e+05   2.172 0.030128
+averageRating:popularity                5.290e+04  1.562e+06   0.034 0.972996
+averageRating:PrimerGeneroAdult                NA         NA      NA       NA
+averageRating:PrimerGeneroAdventure     4.969e+06  1.148e+07   0.433 0.665230
+averageRating:PrimerGeneroAnimation     1.306e+07  7.573e+07   0.172 0.863130
+averageRating:PrimerGeneroBiography    -1.038e+07  1.986e+07  -0.523 0.601341
+averageRating:PrimerGeneroComedy       -5.786e+06  7.869e+06  -0.735 0.462340
+averageRating:PrimerGeneroCrime        -3.100e+06  1.507e+07  -0.206 0.837113
+averageRating:PrimerGeneroDocumentary  -1.736e+06  3.373e+07  -0.051 0.958957
+averageRating:PrimerGeneroDrama        -2.931e+06  9.798e+06  -0.299 0.764930
+averageRating:PrimerGeneroFantasy      -1.072e+08  1.308e+08  -0.820 0.412682
+averageRating:PrimerGeneroFilm-Noir            NA         NA      NA       NA
+averageRating:PrimerGeneroHorror        7.263e+06  1.858e+07   0.391 0.696029
+averageRating:PrimerGeneroMusical              NA         NA      NA       NA
+averageRating:PrimerGeneroMystery      -3.579e+08  3.134e+08  -1.142 0.253802
+averageRating:PrimerGeneroRomance              NA         NA      NA       NA
+averageRating:PrimerGeneroSci-Fi               NA         NA      NA       NA
+averageRating:PrimerGeneroWestern              NA         NA      NA       NA
+numVotes:presupuesto                    1.564e-06  5.323e-07   2.938 0.003403
+numVotes:startYear                     -9.813e+00  3.291e+00  -2.981 0.002962
+numVotes:popularity                    -8.865e+00  4.957e+00  -1.788 0.074115
+numVotes:PrimerGeneroAdult                     NA         NA      NA       NA
+numVotes:PrimerGeneroAdventure          4.822e+01  7.335e+01   0.657 0.511113
+numVotes:PrimerGeneroAnimation          2.519e+03  6.898e+03   0.365 0.715072
+numVotes:PrimerGeneroBiography         -2.100e+02  2.039e+02  -1.030 0.303288
+numVotes:PrimerGeneroComedy            -1.565e+02  1.277e+02  -1.225 0.220837
+numVotes:PrimerGeneroCrime             -2.751e+02  1.099e+02  -2.503 0.012540
+numVotes:PrimerGeneroDocumentary        3.333e+02  5.526e+03   0.060 0.951917
+numVotes:PrimerGeneroDrama             -1.455e+02  9.243e+01  -1.574 0.115924
+numVotes:PrimerGeneroFantasy                   NA         NA      NA       NA
+numVotes:PrimerGeneroFilm-Noir                 NA         NA      NA       NA
+numVotes:PrimerGeneroHorror            -3.220e+02  4.555e+02  -0.707 0.479852
+numVotes:PrimerGeneroMusical                   NA         NA      NA       NA
+numVotes:PrimerGeneroMystery                   NA         NA      NA       NA
+numVotes:PrimerGeneroRomance                   NA         NA      NA       NA
+numVotes:PrimerGeneroSci-Fi                    NA         NA      NA       NA
+numVotes:PrimerGeneroWestern                   NA         NA      NA       NA
+presupuesto:startYear                   5.045e-03  9.691e-03   0.521 0.602812
+presupuesto:popularity                  1.142e-03  2.141e-02   0.053 0.957456
+presupuesto:PrimerGeneroAdult                  NA         NA      NA       NA
+presupuesto:PrimerGeneroAdventure       7.232e-01  2.672e-01   2.706 0.006960
+presupuesto:PrimerGeneroAnimation       4.354e+00  2.405e+01   0.181 0.856362
+presupuesto:PrimerGeneroBiography      -2.591e-01  8.211e-01  -0.316 0.752429
+presupuesto:PrimerGeneroComedy         -1.941e-01  3.675e-01  -0.528 0.597542
+presupuesto:PrimerGeneroCrime          -5.245e-02  6.016e-01  -0.087 0.930544
+presupuesto:PrimerGeneroDocumentary    -6.386e-03  2.225e+00  -0.003 0.997711
+presupuesto:PrimerGeneroDrama          -5.082e-01  3.451e-01  -1.473 0.141258
+presupuesto:PrimerGeneroFantasy                NA         NA      NA       NA
+presupuesto:PrimerGeneroFilm-Noir              NA         NA      NA       NA
+presupuesto:PrimerGeneroHorror          1.213e-01  1.030e+00   0.118 0.906279
+presupuesto:PrimerGeneroMusical                NA         NA      NA       NA
+presupuesto:PrimerGeneroMystery                NA         NA      NA       NA
+presupuesto:PrimerGeneroRomance                NA         NA      NA       NA
+presupuesto:PrimerGeneroSci-Fi                 NA         NA      NA       NA
+presupuesto:PrimerGeneroWestern                NA         NA      NA       NA
+startYear:popularity                    2.015e+05  9.280e+04   2.171 0.030245
+startYear:PrimerGeneroAdult                    NA         NA      NA       NA
+startYear:PrimerGeneroAdventure        -3.165e+04  6.487e+05  -0.049 0.961097
+startYear:PrimerGeneroAnimation         6.452e+05  1.355e+07   0.048 0.962026
+startYear:PrimerGeneroBiography        -2.920e+05  6.932e+05  -0.421 0.673673
+startYear:PrimerGeneroComedy            1.644e+05  4.332e+05   0.379 0.704434
+startYear:PrimerGeneroCrime            -3.158e+05  5.740e+05  -0.550 0.582425
+startYear:PrimerGeneroDocumentary      -1.464e+06  6.434e+06  -0.228 0.820060
+startYear:PrimerGeneroDrama            -2.089e+05  4.658e+05  -0.448 0.653936
+startYear:PrimerGeneroFantasy                  NA         NA      NA       NA
+startYear:PrimerGeneroFilm-Noir                NA         NA      NA       NA
+startYear:PrimerGeneroHorror            1.083e+06  8.667e+05   1.249 0.211959
+startYear:PrimerGeneroMusical                  NA         NA      NA       NA
+startYear:PrimerGeneroMystery                  NA         NA      NA       NA
+startYear:PrimerGeneroRomance                  NA         NA      NA       NA
+startYear:PrimerGeneroSci-Fi                   NA         NA      NA       NA
+startYear:PrimerGeneroWestern                  NA         NA      NA       NA
+popularity:PrimerGeneroAdult                   NA         NA      NA       NA
+popularity:PrimerGeneroAdventure       -1.124e+06  2.114e+06  -0.532 0.595116
+popularity:PrimerGeneroAnimation       -2.746e+07  7.245e+07  -0.379 0.704804
+popularity:PrimerGeneroBiography        1.091e+07  1.001e+07   1.089 0.276507
+popularity:PrimerGeneroComedy           7.921e+06  5.456e+06   1.452 0.146962
+popularity:PrimerGeneroCrime            9.475e+06  6.363e+06   1.489 0.136891
+popularity:PrimerGeneroDocumentary     -2.190e+07  8.722e+07  -0.251 0.801824
+popularity:PrimerGeneroDrama            1.729e+06  2.245e+06   0.770 0.441584
+popularity:PrimerGeneroFantasy                 NA         NA      NA       NA
+popularity:PrimerGeneroFilm-Noir               NA         NA      NA       NA
+popularity:PrimerGeneroHorror           1.141e+07  9.178e+06   1.243 0.214177
+popularity:PrimerGeneroMusical                 NA         NA      NA       NA
+popularity:PrimerGeneroMystery                 NA         NA      NA       NA
+popularity:PrimerGeneroRomance                 NA         NA      NA       NA
+popularity:PrimerGeneroSci-Fi                  NA         NA      NA       NA
+popularity:PrimerGeneroWestern                 NA         NA      NA       NA
+                                          
+(Intercept)                               
+runtimeMinutes                            
+averageRating                          *  
+numVotes                               ** 
+presupuesto                               
+startYear                                 
+popularity                             *  
+PrimerGeneroAdult                         
+PrimerGeneroAdventure                     
+PrimerGeneroAnimation                     
+PrimerGeneroBiography                     
+PrimerGeneroComedy                        
+PrimerGeneroCrime                         
+PrimerGeneroDocumentary                   
+PrimerGeneroDrama                         
+PrimerGeneroFantasy                       
+PrimerGeneroFilm-Noir                     
+PrimerGeneroHorror                        
+PrimerGeneroMusical                       
+PrimerGeneroMystery                       
+PrimerGeneroRomance                       
+PrimerGeneroSci-Fi                        
+PrimerGeneroWestern                       
+runtimeMinutes:averageRating              
+runtimeMinutes:numVotes                ***
+runtimeMinutes:presupuesto             ***
+runtimeMinutes:startYear                  
+runtimeMinutes:popularity                 
+runtimeMinutes:PrimerGeneroAdult          
+runtimeMinutes:PrimerGeneroAdventure      
+runtimeMinutes:PrimerGeneroAnimation      
+runtimeMinutes:PrimerGeneroBiography      
+runtimeMinutes:PrimerGeneroComedy         
+runtimeMinutes:PrimerGeneroCrime          
+runtimeMinutes:PrimerGeneroDocumentary    
+runtimeMinutes:PrimerGeneroDrama          
+runtimeMinutes:PrimerGeneroFantasy        
+runtimeMinutes:PrimerGeneroFilm-Noir      
+runtimeMinutes:PrimerGeneroHorror         
+runtimeMinutes:PrimerGeneroMusical        
+runtimeMinutes:PrimerGeneroMystery     *  
+runtimeMinutes:PrimerGeneroRomance        
+runtimeMinutes:PrimerGeneroSci-Fi         
+runtimeMinutes:PrimerGeneroWestern        
+averageRating:numVotes                    
+averageRating:presupuesto                 
+averageRating:startYear                *  
+averageRating:popularity                  
+averageRating:PrimerGeneroAdult           
+averageRating:PrimerGeneroAdventure       
+averageRating:PrimerGeneroAnimation       
+averageRating:PrimerGeneroBiography       
+averageRating:PrimerGeneroComedy          
+averageRating:PrimerGeneroCrime           
+averageRating:PrimerGeneroDocumentary     
+averageRating:PrimerGeneroDrama           
+averageRating:PrimerGeneroFantasy         
+averageRating:PrimerGeneroFilm-Noir       
+averageRating:PrimerGeneroHorror          
+averageRating:PrimerGeneroMusical         
+averageRating:PrimerGeneroMystery         
+averageRating:PrimerGeneroRomance         
+averageRating:PrimerGeneroSci-Fi          
+averageRating:PrimerGeneroWestern         
+numVotes:presupuesto                   ** 
+numVotes:startYear                     ** 
+numVotes:popularity                    .  
+numVotes:PrimerGeneroAdult                
+numVotes:PrimerGeneroAdventure            
+numVotes:PrimerGeneroAnimation            
+numVotes:PrimerGeneroBiography            
+numVotes:PrimerGeneroComedy               
+numVotes:PrimerGeneroCrime             *  
+numVotes:PrimerGeneroDocumentary          
+numVotes:PrimerGeneroDrama                
+numVotes:PrimerGeneroFantasy              
+numVotes:PrimerGeneroFilm-Noir            
+numVotes:PrimerGeneroHorror               
+numVotes:PrimerGeneroMusical              
+numVotes:PrimerGeneroMystery              
+numVotes:PrimerGeneroRomance              
+numVotes:PrimerGeneroSci-Fi               
+numVotes:PrimerGeneroWestern              
+presupuesto:startYear                     
+presupuesto:popularity                    
+presupuesto:PrimerGeneroAdult             
+presupuesto:PrimerGeneroAdventure      ** 
+presupuesto:PrimerGeneroAnimation         
+presupuesto:PrimerGeneroBiography         
+presupuesto:PrimerGeneroComedy            
+presupuesto:PrimerGeneroCrime             
+presupuesto:PrimerGeneroDocumentary       
+presupuesto:PrimerGeneroDrama             
+presupuesto:PrimerGeneroFantasy           
+presupuesto:PrimerGeneroFilm-Noir         
+presupuesto:PrimerGeneroHorror            
+presupuesto:PrimerGeneroMusical           
+presupuesto:PrimerGeneroMystery           
+presupuesto:PrimerGeneroRomance           
+presupuesto:PrimerGeneroSci-Fi            
+presupuesto:PrimerGeneroWestern           
+startYear:popularity                   *  
+startYear:PrimerGeneroAdult               
+startYear:PrimerGeneroAdventure           
+startYear:PrimerGeneroAnimation           
+startYear:PrimerGeneroBiography           
+startYear:PrimerGeneroComedy              
+startYear:PrimerGeneroCrime               
+startYear:PrimerGeneroDocumentary         
+startYear:PrimerGeneroDrama               
+startYear:PrimerGeneroFantasy             
+startYear:PrimerGeneroFilm-Noir           
+startYear:PrimerGeneroHorror              
+startYear:PrimerGeneroMusical             
+startYear:PrimerGeneroMystery             
+startYear:PrimerGeneroRomance             
+startYear:PrimerGeneroSci-Fi              
+startYear:PrimerGeneroWestern             
+popularity:PrimerGeneroAdult              
+popularity:PrimerGeneroAdventure          
+popularity:PrimerGeneroAnimation          
+popularity:PrimerGeneroBiography          
+popularity:PrimerGeneroComedy             
+popularity:PrimerGeneroCrime              
+popularity:PrimerGeneroDocumentary        
+popularity:PrimerGeneroDrama              
+popularity:PrimerGeneroFantasy            
+popularity:PrimerGeneroFilm-Noir          
+popularity:PrimerGeneroHorror             
+popularity:PrimerGeneroMusical            
+popularity:PrimerGeneroMystery            
+popularity:PrimerGeneroRomance            
+popularity:PrimerGeneroSci-Fi             
+popularity:PrimerGeneroWestern            
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 71800000 on 757 degrees of freedom
+Multiple R-squared:  0.766, Adjusted R-squared:  0.7379 
+F-statistic: 27.24 on 91 and 757 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>Corremos el comando <code>steps()</code></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|output: false</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="co">#|eval: false</span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>modelo_optimizado <span class="ot">&lt;-</span> <span class="fu">step</span>(modelo_full)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Start:  AIC=30802.32
+taquilla ~ (runtimeMinutes + averageRating + numVotes + presupuesto + 
+    startYear + popularity + PrimerGenero)^2
+
+                               Df  Sum of Sq        RSS   AIC
+- averageRating:PrimerGenero    8 8.1446e+15 3.9102e+18 30788
+- startYear:PrimerGenero        8 1.5910e+16 3.9180e+18 30790
+- runtimeMinutes:PrimerGenero   8 2.3122e+16 3.9252e+18 30791
+- popularity:PrimerGenero       8 3.5225e+16 3.9373e+18 30794
+- numVotes:PrimerGenero         8 5.6419e+16 3.9585e+18 30798
+- presupuesto:PrimerGenero      8 6.1475e+16 3.9635e+18 30800
+- averageRating:popularity      1 5.9107e+12 3.9021e+18 30800
+- presupuesto:popularity        1 1.4679e+13 3.9021e+18 30800
+- presupuesto:startYear         1 1.3969e+15 3.9035e+18 30801
+- runtimeMinutes:averageRating  1 2.0500e+15 3.9041e+18 30801
+- averageRating:numVotes        1 3.8490e+15 3.9059e+18 30801
+- runtimeMinutes:popularity     1 4.6595e+15 3.9067e+18 30801
+- averageRating:presupuesto     1 4.9566e+15 3.9070e+18 30801
+&lt;none&gt;                                       3.9021e+18 30802
+- runtimeMinutes:startYear      1 1.2302e+16 3.9144e+18 30803
+- numVotes:popularity           1 1.6486e+16 3.9186e+18 30804
+- startYear:popularity          1 2.4294e+16 3.9264e+18 30806
+- averageRating:startYear       1 2.4329e+16 3.9264e+18 30806
+- numVotes:presupuesto          1 4.4497e+16 3.9466e+18 30810
+- numVotes:startYear            1 4.5817e+16 3.9479e+18 30810
+- runtimeMinutes:numVotes       1 6.6534e+16 3.9686e+18 30815
+- runtimeMinutes:presupuesto    1 2.0001e+17 4.1021e+18 30843
+
+Step:  AIC=30788.09
+taquilla ~ runtimeMinutes + averageRating + numVotes + presupuesto + 
+    startYear + popularity + PrimerGenero + runtimeMinutes:averageRating + 
+    runtimeMinutes:numVotes + runtimeMinutes:presupuesto + runtimeMinutes:startYear + 
+    runtimeMinutes:popularity + runtimeMinutes:PrimerGenero + 
+    averageRating:numVotes + averageRating:presupuesto + averageRating:startYear + 
+    averageRating:popularity + numVotes:presupuesto + numVotes:startYear + 
+    numVotes:popularity + numVotes:PrimerGenero + presupuesto:startYear + 
+    presupuesto:popularity + presupuesto:PrimerGenero + startYear:popularity + 
+    startYear:PrimerGenero + popularity:PrimerGenero
+
+                               Df  Sum of Sq        RSS   AIC
+- startYear:PrimerGenero        8 1.6282e+16 3.9265e+18 30776
+- runtimeMinutes:PrimerGenero   8 2.3271e+16 3.9335e+18 30777
+- popularity:PrimerGenero       8 3.3445e+16 3.9437e+18 30779
+- presupuesto:PrimerGenero      8 5.7736e+16 3.9680e+18 30784
+- presupuesto:popularity        1 8.1930e+12 3.9102e+18 30786
+- averageRating:popularity      1 3.4622e+14 3.9106e+18 30786
+- numVotes:PrimerGenero         8 6.5676e+16 3.9759e+18 30786
+- presupuesto:startYear         1 1.7154e+15 3.9119e+18 30786
+- runtimeMinutes:averageRating  1 2.4166e+15 3.9126e+18 30787
+- averageRating:numVotes        1 4.9670e+15 3.9152e+18 30787
+- runtimeMinutes:popularity     1 6.2089e+15 3.9164e+18 30787
+- averageRating:presupuesto     1 6.3947e+15 3.9166e+18 30788
+&lt;none&gt;                                       3.9102e+18 30788
+- runtimeMinutes:startYear      1 1.2423e+16 3.9226e+18 30789
+- numVotes:popularity           1 1.6716e+16 3.9269e+18 30790
+- averageRating:startYear       1 2.4404e+16 3.9346e+18 30791
+- startYear:popularity          1 2.5256e+16 3.9355e+18 30792
+- numVotes:presupuesto          1 4.2008e+16 3.9522e+18 30795
+- numVotes:startYear            1 4.5037e+16 3.9553e+18 30796
+- runtimeMinutes:numVotes       1 6.3421e+16 3.9736e+18 30800
+- runtimeMinutes:presupuesto    1 2.0100e+17 4.1112e+18 30829
+
+Step:  AIC=30775.62
+taquilla ~ runtimeMinutes + averageRating + numVotes + presupuesto + 
+    startYear + popularity + PrimerGenero + runtimeMinutes:averageRating + 
+    runtimeMinutes:numVotes + runtimeMinutes:presupuesto + runtimeMinutes:startYear + 
+    runtimeMinutes:popularity + runtimeMinutes:PrimerGenero + 
+    averageRating:numVotes + averageRating:presupuesto + averageRating:startYear + 
+    averageRating:popularity + numVotes:presupuesto + numVotes:startYear + 
+    numVotes:popularity + numVotes:PrimerGenero + presupuesto:startYear + 
+    presupuesto:popularity + presupuesto:PrimerGenero + startYear:popularity + 
+    popularity:PrimerGenero
+
+                               Df  Sum of Sq        RSS   AIC
+- runtimeMinutes:PrimerGenero   8 2.2702e+16 3.9492e+18 30764
+- popularity:PrimerGenero       8 4.2248e+16 3.9687e+18 30769
+- presupuesto:popularity        1 5.5404e+13 3.9266e+18 30774
+- averageRating:popularity      1 2.4173e+14 3.9267e+18 30774
+- presupuesto:PrimerGenero      8 6.5544e+16 3.9920e+18 30774
+- presupuesto:startYear         1 1.0253e+15 3.9275e+18 30774
+- runtimeMinutes:averageRating  1 2.9618e+15 3.9295e+18 30774
+- averageRating:numVotes        1 5.8810e+15 3.9324e+18 30775
+- runtimeMinutes:popularity     1 6.1748e+15 3.9327e+18 30775
+- numVotes:PrimerGenero         8 7.3234e+16 3.9997e+18 30775
+- averageRating:presupuesto     1 7.8473e+15 3.9343e+18 30775
+&lt;none&gt;                                       3.9265e+18 30776
+- numVotes:popularity           1 1.4695e+16 3.9412e+18 30777
+- averageRating:startYear       1 2.1034e+16 3.9475e+18 30778
+- runtimeMinutes:startYear      1 2.1928e+16 3.9484e+18 30778
+- startYear:popularity          1 3.4455e+16 3.9610e+18 30781
+- numVotes:presupuesto          1 3.8944e+16 3.9654e+18 30782
+- numVotes:startYear            1 4.3754e+16 3.9703e+18 30783
+- runtimeMinutes:numVotes       1 6.2897e+16 3.9894e+18 30787
+- runtimeMinutes:presupuesto    1 2.0346e+17 4.1300e+18 30816
+
+Step:  AIC=30764.51
+taquilla ~ runtimeMinutes + averageRating + numVotes + presupuesto + 
+    startYear + popularity + PrimerGenero + runtimeMinutes:averageRating + 
+    runtimeMinutes:numVotes + runtimeMinutes:presupuesto + runtimeMinutes:startYear + 
+    runtimeMinutes:popularity + averageRating:numVotes + averageRating:presupuesto + 
+    averageRating:startYear + averageRating:popularity + numVotes:presupuesto + 
+    numVotes:startYear + numVotes:popularity + numVotes:PrimerGenero + 
+    presupuesto:startYear + presupuesto:popularity + presupuesto:PrimerGenero + 
+    startYear:popularity + popularity:PrimerGenero
+
+                               Df  Sum of Sq        RSS   AIC
+- popularity:PrimerGenero       8 4.6961e+16 3.9962e+18 30758
+- presupuesto:popularity        1 1.8467e+13 3.9492e+18 30762
+- averageRating:popularity      1 3.2566e+14 3.9495e+18 30763
+- runtimeMinutes:averageRating  1 6.7552e+14 3.9499e+18 30763
+- presupuesto:startYear         1 7.3053e+14 3.9499e+18 30763
+- averageRating:numVotes        1 5.0550e+15 3.9543e+18 30764
+- presupuesto:PrimerGenero      8 7.1964e+16 4.0212e+18 30764
+- runtimeMinutes:popularity     1 6.6052e+15 3.9558e+18 30764
+- averageRating:presupuesto     1 8.0303e+15 3.9572e+18 30764
+&lt;none&gt;                                       3.9492e+18 30764
+- numVotes:PrimerGenero         8 7.8366e+16 4.0276e+18 30765
+- runtimeMinutes:startYear      1 1.3831e+16 3.9630e+18 30766
+- numVotes:popularity           1 1.4433e+16 3.9636e+18 30766
+- averageRating:startYear       1 1.8304e+16 3.9675e+18 30766
+- startYear:popularity          1 3.2046e+16 3.9812e+18 30769
+- numVotes:presupuesto          1 3.9756e+16 3.9890e+18 30771
+- numVotes:startYear            1 4.3189e+16 3.9924e+18 30772
+- runtimeMinutes:numVotes       1 6.5721e+16 4.0149e+18 30776
+- runtimeMinutes:presupuesto    1 2.1091e+17 4.1601e+18 30807
+
+Step:  AIC=30758.55
+taquilla ~ runtimeMinutes + averageRating + numVotes + presupuesto + 
+    startYear + popularity + PrimerGenero + runtimeMinutes:averageRating + 
+    runtimeMinutes:numVotes + runtimeMinutes:presupuesto + runtimeMinutes:startYear + 
+    runtimeMinutes:popularity + averageRating:numVotes + averageRating:presupuesto + 
+    averageRating:startYear + averageRating:popularity + numVotes:presupuesto + 
+    numVotes:startYear + numVotes:popularity + numVotes:PrimerGenero + 
+    presupuesto:startYear + presupuesto:popularity + presupuesto:PrimerGenero + 
+    startYear:popularity
+
+                               Df  Sum of Sq        RSS   AIC
+- numVotes:PrimerGenero        10 6.5870e+16 4.0620e+18 30752
+- presupuesto:PrimerGenero     10 6.6577e+16 4.0627e+18 30753
+- runtimeMinutes:averageRating  1 3.4609e+13 3.9962e+18 30757
+- presupuesto:popularity        1 1.3374e+15 3.9975e+18 30757
+- runtimeMinutes:popularity     1 2.4837e+15 3.9986e+18 30757
+- averageRating:popularity      1 2.5138e+15 3.9987e+18 30757
+- presupuesto:startYear         1 3.2483e+15 3.9994e+18 30757
+- averageRating:numVotes        1 5.3707e+15 4.0015e+18 30758
+- averageRating:presupuesto     1 6.0676e+15 4.0022e+18 30758
+&lt;none&gt;                                       3.9962e+18 30758
+- runtimeMinutes:startYear      1 1.1736e+16 4.0079e+18 30759
+- startYear:popularity          1 1.2700e+16 4.0089e+18 30759
+- numVotes:popularity           1 1.6124e+16 4.0123e+18 30760
+- averageRating:startYear       1 2.1206e+16 4.0174e+18 30761
+- numVotes:startYear            1 3.3406e+16 4.0296e+18 30764
+- numVotes:presupuesto          1 5.3266e+16 4.0494e+18 30768
+- runtimeMinutes:numVotes       1 8.9766e+16 4.0859e+18 30775
+- runtimeMinutes:presupuesto    1 1.9910e+17 4.1953e+18 30798
+
+Step:  AIC=30752.43
+taquilla ~ runtimeMinutes + averageRating + numVotes + presupuesto + 
+    startYear + popularity + PrimerGenero + runtimeMinutes:averageRating + 
+    runtimeMinutes:numVotes + runtimeMinutes:presupuesto + runtimeMinutes:startYear + 
+    runtimeMinutes:popularity + averageRating:numVotes + averageRating:presupuesto + 
+    averageRating:startYear + averageRating:popularity + numVotes:presupuesto + 
+    numVotes:startYear + numVotes:popularity + presupuesto:startYear + 
+    presupuesto:popularity + presupuesto:PrimerGenero + startYear:popularity
+
+                               Df  Sum of Sq        RSS   AIC
+- runtimeMinutes:averageRating  1 2.3360e+13 4.0621e+18 30750
+- runtimeMinutes:popularity     1 3.8490e+15 4.0659e+18 30751
+- averageRating:popularity      1 4.4406e+15 4.0665e+18 30751
+- presupuesto:startYear         1 5.1511e+15 4.0672e+18 30752
+- presupuesto:popularity        1 6.0119e+15 4.0680e+18 30752
+- numVotes:popularity           1 7.6020e+15 4.0696e+18 30752
+&lt;none&gt;                                       4.0620e+18 30752
+- averageRating:presupuesto     1 1.1050e+16 4.0731e+18 30753
+- runtimeMinutes:startYear      1 1.1699e+16 4.0737e+18 30753
+- startYear:popularity          1 1.4379e+16 4.0764e+18 30753
+- averageRating:numVotes        1 1.8976e+16 4.0810e+18 30754
+- averageRating:startYear       1 2.4875e+16 4.0869e+18 30756
+- numVotes:startYear            1 7.6909e+16 4.1389e+18 30766
+- presupuesto:PrimerGenero     12 1.9156e+17 4.2536e+18 30768
+- numVotes:presupuesto          1 1.2382e+17 4.1859e+18 30776
+- runtimeMinutes:numVotes       1 1.3974e+17 4.2018e+18 30779
+- runtimeMinutes:presupuesto    1 2.3001e+17 4.2920e+18 30797
+
+Step:  AIC=30750.43
+taquilla ~ runtimeMinutes + averageRating + numVotes + presupuesto + 
+    startYear + popularity + PrimerGenero + runtimeMinutes:numVotes + 
+    runtimeMinutes:presupuesto + runtimeMinutes:startYear + runtimeMinutes:popularity + 
+    averageRating:numVotes + averageRating:presupuesto + averageRating:startYear + 
+    averageRating:popularity + numVotes:presupuesto + numVotes:startYear + 
+    numVotes:popularity + presupuesto:startYear + presupuesto:popularity + 
+    presupuesto:PrimerGenero + startYear:popularity
+
+                             Df  Sum of Sq        RSS   AIC
+- runtimeMinutes:popularity   1 3.8403e+15 4.0659e+18 30749
+- averageRating:popularity    1 4.4198e+15 4.0665e+18 30749
+- presupuesto:startYear       1 5.2241e+15 4.0673e+18 30750
+- presupuesto:popularity      1 6.0186e+15 4.0681e+18 30750
+- numVotes:popularity         1 7.8151e+15 4.0699e+18 30750
+&lt;none&gt;                                     4.0621e+18 30750
+- averageRating:presupuesto   1 1.1081e+16 4.0731e+18 30751
+- runtimeMinutes:startYear    1 1.2650e+16 4.0747e+18 30751
+- startYear:popularity        1 1.4424e+16 4.0765e+18 30751
+- averageRating:numVotes      1 1.8955e+16 4.0810e+18 30752
+- averageRating:startYear     1 2.6609e+16 4.0887e+18 30754
+- numVotes:startYear          1 7.6937e+16 4.1390e+18 30764
+- presupuesto:PrimerGenero   12 1.9153e+17 4.2536e+18 30766
+- numVotes:presupuesto        1 1.2424e+17 4.1863e+18 30774
+- runtimeMinutes:numVotes     1 1.4383e+17 4.2059e+18 30778
+- runtimeMinutes:presupuesto  1 2.3605e+17 4.2981e+18 30796
+
+Step:  AIC=30749.24
+taquilla ~ runtimeMinutes + averageRating + numVotes + presupuesto + 
+    startYear + popularity + PrimerGenero + runtimeMinutes:numVotes + 
+    runtimeMinutes:presupuesto + runtimeMinutes:startYear + averageRating:numVotes + 
+    averageRating:presupuesto + averageRating:startYear + averageRating:popularity + 
+    numVotes:presupuesto + numVotes:startYear + numVotes:popularity + 
+    presupuesto:startYear + presupuesto:popularity + presupuesto:PrimerGenero + 
+    startYear:popularity
+
+                             Df  Sum of Sq        RSS   AIC
+- averageRating:popularity    1 7.6815e+14 4.0667e+18 30747
+- presupuesto:startYear       1 5.6449e+15 4.0715e+18 30748
+- presupuesto:popularity      1 6.3713e+15 4.0723e+18 30749
+- numVotes:popularity         1 7.1070e+15 4.0730e+18 30749
+&lt;none&gt;                                     4.0659e+18 30749
+- runtimeMinutes:startYear    1 1.1542e+16 4.0774e+18 30750
+- startYear:popularity        1 1.1601e+16 4.0775e+18 30750
+- averageRating:numVotes      1 1.5438e+16 4.0813e+18 30750
+- averageRating:presupuesto   1 1.5588e+16 4.0815e+18 30750
+- averageRating:startYear     1 2.5398e+16 4.0913e+18 30752
+- numVotes:startYear          1 7.3800e+16 4.1397e+18 30762
+- presupuesto:PrimerGenero   12 1.9428e+17 4.2602e+18 30765
+- numVotes:presupuesto        1 1.2184e+17 4.1877e+18 30772
+- runtimeMinutes:presupuesto  1 2.3790e+17 4.3038e+18 30796
+- runtimeMinutes:numVotes     1 3.1546e+17 4.3814e+18 30811
+
+Step:  AIC=30747.4
+taquilla ~ runtimeMinutes + averageRating + numVotes + presupuesto + 
+    startYear + popularity + PrimerGenero + runtimeMinutes:numVotes + 
+    runtimeMinutes:presupuesto + runtimeMinutes:startYear + averageRating:numVotes + 
+    averageRating:presupuesto + averageRating:startYear + numVotes:presupuesto + 
+    numVotes:startYear + numVotes:popularity + presupuesto:startYear + 
+    presupuesto:popularity + presupuesto:PrimerGenero + startYear:popularity
+
+                             Df  Sum of Sq        RSS   AIC
+- presupuesto:startYear       1 5.5844e+15 4.0722e+18 30747
+- presupuesto:popularity      1 5.6046e+15 4.0723e+18 30747
+- numVotes:popularity         1 7.2565e+15 4.0739e+18 30747
+&lt;none&gt;                                     4.0667e+18 30747
+- startYear:popularity        1 1.0898e+16 4.0776e+18 30748
+- runtimeMinutes:startYear    1 1.1353e+16 4.0780e+18 30748
+- averageRating:numVotes      1 1.4675e+16 4.0813e+18 30748
+- averageRating:presupuesto   1 1.6960e+16 4.0836e+18 30749
+- averageRating:startYear     1 2.5765e+16 4.0924e+18 30751
+- numVotes:startYear          1 7.3137e+16 4.1398e+18 30760
+- presupuesto:PrimerGenero   12 1.9370e+17 4.2604e+18 30763
+- numVotes:presupuesto        1 1.2355e+17 4.1902e+18 30771
+- runtimeMinutes:presupuesto  1 2.3714e+17 4.3038e+18 30794
+- runtimeMinutes:numVotes     1 3.1601e+17 4.3827e+18 30809
+
+Step:  AIC=30746.56
+taquilla ~ runtimeMinutes + averageRating + numVotes + presupuesto + 
+    startYear + popularity + PrimerGenero + runtimeMinutes:numVotes + 
+    runtimeMinutes:presupuesto + runtimeMinutes:startYear + averageRating:numVotes + 
+    averageRating:presupuesto + averageRating:startYear + numVotes:presupuesto + 
+    numVotes:startYear + numVotes:popularity + presupuesto:popularity + 
+    presupuesto:PrimerGenero + startYear:popularity
+
+                             Df  Sum of Sq        RSS   AIC
+- presupuesto:popularity      1 2.9076e+15 4.0752e+18 30745
+- numVotes:popularity         1 8.6375e+15 4.0809e+18 30746
+- runtimeMinutes:startYear    1 8.9762e+15 4.0812e+18 30746
+&lt;none&gt;                                     4.0722e+18 30747
+- startYear:popularity        1 1.2194e+16 4.0844e+18 30747
+- averageRating:numVotes      1 1.2278e+16 4.0845e+18 30747
+- averageRating:presupuesto   1 1.4320e+16 4.0866e+18 30748
+- averageRating:startYear     1 2.0991e+16 4.0932e+18 30749
+- numVotes:startYear          1 6.7593e+16 4.1398e+18 30758
+- presupuesto:PrimerGenero   12 1.9332e+17 4.2656e+18 30762
+- numVotes:presupuesto        1 1.1798e+17 4.1902e+18 30769
+- runtimeMinutes:presupuesto  1 2.5030e+17 4.3225e+18 30795
+- runtimeMinutes:numVotes     1 3.1662e+17 4.3889e+18 30808
+
+Step:  AIC=30745.17
+taquilla ~ runtimeMinutes + averageRating + numVotes + presupuesto + 
+    startYear + popularity + PrimerGenero + runtimeMinutes:numVotes + 
+    runtimeMinutes:presupuesto + runtimeMinutes:startYear + averageRating:numVotes + 
+    averageRating:presupuesto + averageRating:startYear + numVotes:presupuesto + 
+    numVotes:startYear + numVotes:popularity + presupuesto:PrimerGenero + 
+    startYear:popularity
+
+                             Df  Sum of Sq        RSS   AIC
+- runtimeMinutes:startYear    1 8.9146e+15 4.0841e+18 30745
+&lt;none&gt;                                     4.0752e+18 30745
+- averageRating:numVotes      1 1.1181e+16 4.0863e+18 30746
+- numVotes:popularity         1 1.3246e+16 4.0884e+18 30746
+- startYear:popularity        1 1.3604e+16 4.0888e+18 30746
+- averageRating:presupuesto   1 1.3677e+16 4.0888e+18 30746
+- averageRating:startYear     1 2.0966e+16 4.0961e+18 30748
+- numVotes:startYear          1 7.0277e+16 4.1454e+18 30758
+- presupuesto:PrimerGenero   12 1.9564e+17 4.2708e+18 30761
+- numVotes:presupuesto        1 1.1871e+17 4.1939e+18 30768
+- runtimeMinutes:presupuesto  1 2.4848e+17 4.3236e+18 30793
+- runtimeMinutes:numVotes     1 3.1560e+17 4.3908e+18 30806
+
+Step:  AIC=30745.02
+taquilla ~ runtimeMinutes + averageRating + numVotes + presupuesto + 
+    startYear + popularity + PrimerGenero + runtimeMinutes:numVotes + 
+    runtimeMinutes:presupuesto + averageRating:numVotes + averageRating:presupuesto + 
+    averageRating:startYear + numVotes:presupuesto + numVotes:startYear + 
+    numVotes:popularity + presupuesto:PrimerGenero + startYear:popularity
+
+                             Df  Sum of Sq        RSS   AIC
+&lt;none&gt;                                     4.0841e+18 30745
+- startYear:popularity        1 1.0706e+16 4.0948e+18 30745
+- averageRating:numVotes      1 1.1339e+16 4.0954e+18 30745
+- averageRating:presupuesto   1 1.4813e+16 4.0989e+18 30746
+- numVotes:popularity         1 1.5009e+16 4.0991e+18 30746
+- averageRating:startYear     1 1.5320e+16 4.0994e+18 30746
+- numVotes:startYear          1 6.7315e+16 4.1514e+18 30757
+- presupuesto:PrimerGenero   12 1.9265e+17 4.2767e+18 30760
+- numVotes:presupuesto        1 1.2000e+17 4.2041e+18 30768
+- runtimeMinutes:presupuesto  1 2.4213e+17 4.3262e+18 30792
+- runtimeMinutes:numVotes     1 3.0712e+17 4.3912e+18 30805</code></pre>
+</div>
+</div>
+<p>Y obtenemos Nuestro modelo optimizado:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_optimizado)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = taquilla ~ runtimeMinutes + averageRating + numVotes + 
+    presupuesto + startYear + popularity + PrimerGenero + runtimeMinutes:numVotes + 
+    runtimeMinutes:presupuesto + averageRating:numVotes + averageRating:presupuesto + 
+    averageRating:startYear + numVotes:presupuesto + numVotes:startYear + 
+    numVotes:popularity + presupuesto:PrimerGenero + startYear:popularity)
+
+Residuals:
+       Min         1Q     Median         3Q        Max 
+-317593167  -16137496    -753508    9666754  958579064 
+
+Coefficients: (4 not defined because of singularities)
+                                      Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                          3.437e+09  1.915e+09   1.794 0.073110 .  
+runtimeMinutes                       1.640e+05  1.606e+05   1.021 0.307540    
+averageRating                       -5.089e+08  2.898e+08  -1.756 0.079439 .  
+numVotes                             2.133e+04  5.535e+03   3.853 0.000126 ***
+presupuesto                         -2.861e+00  7.306e-01  -3.916 9.77e-05 ***
+startYear                           -1.711e+06  9.572e+05  -1.787 0.074312 .  
+popularity                          -1.952e+08  1.346e+08  -1.450 0.147454    
+PrimerGeneroAdult                    1.781e+07  7.214e+07   0.247 0.805094    
+PrimerGeneroAdventure                5.708e+06  1.218e+07   0.469 0.639424    
+PrimerGeneroAnimation                3.256e+07  4.775e+07   0.682 0.495533    
+PrimerGeneroBiography                1.618e+06  1.584e+07   0.102 0.918659    
+PrimerGeneroComedy                   1.607e+06  8.971e+06   0.179 0.857857    
+PrimerGeneroCrime                    3.781e+06  1.303e+07   0.290 0.771843    
+PrimerGeneroDocumentary              1.921e+07  3.373e+07   0.570 0.569102    
+PrimerGeneroDrama                    2.759e+06  9.818e+06   0.281 0.778800    
+PrimerGeneroFantasy                 -7.748e+06  5.326e+07  -0.145 0.884377    
+PrimerGeneroFilm-Noir                3.868e+06  7.196e+07   0.054 0.957147    
+PrimerGeneroHorror                  -9.407e+05  1.753e+07  -0.054 0.957211    
+PrimerGeneroMusical                  2.235e+07  7.218e+07   0.310 0.756961    
+PrimerGeneroMystery                 -6.625e+06  5.250e+07  -0.126 0.899614    
+PrimerGeneroRomance                  5.780e+07  5.831e+08   0.099 0.921065    
+PrimerGeneroSci-Fi                   5.486e+07  2.705e+08   0.203 0.839356    
+PrimerGeneroWestern                  7.412e+06  7.261e+07   0.102 0.918719    
+runtimeMinutes:numVotes             -7.629e+00  9.806e-01  -7.780 2.21e-14 ***
+runtimeMinutes:presupuesto           2.465e-02  3.568e-03   6.908 9.96e-12 ***
+averageRating:numVotes              -5.876e+01  3.930e+01  -1.495 0.135302    
+averageRating:presupuesto            1.797e-01  1.051e-01   1.709 0.087889 .  
+averageRating:startYear              2.515e+05  1.447e+05   1.738 0.082637 .  
+numVotes:presupuesto                 1.997e-06  4.107e-07   4.863 1.39e-06 ***
+numVotes:startYear                  -9.767e+00  2.681e+00  -3.643 0.000287 ***
+numVotes:popularity                 -6.456e+00  3.753e+00  -1.720 0.085817 .  
+presupuesto:PrimerGeneroAdult               NA         NA      NA       NA    
+presupuesto:PrimerGeneroAdventure    6.423e-01  1.850e-01   3.473 0.000543 ***
+presupuesto:PrimerGeneroAnimation   -2.643e+00  9.401e+00  -0.281 0.778698    
+presupuesto:PrimerGeneroBiography   -4.301e-01  5.987e-01  -0.719 0.472655    
+presupuesto:PrimerGeneroComedy      -7.086e-02  2.747e-01  -0.258 0.796523    
+presupuesto:PrimerGeneroCrime       -3.616e-01  4.959e-01  -0.729 0.466124    
+presupuesto:PrimerGeneroDocumentary -6.441e-01  1.662e+00  -0.388 0.698364    
+presupuesto:PrimerGeneroDrama       -7.448e-01  2.979e-01  -2.500 0.012625 *  
+presupuesto:PrimerGeneroFantasy      1.586e+00  2.576e+00   0.615 0.538406    
+presupuesto:PrimerGeneroFilm-Noir           NA         NA      NA       NA    
+presupuesto:PrimerGeneroHorror       1.125e-01  7.080e-01   0.159 0.873810    
+presupuesto:PrimerGeneroMusical             NA         NA      NA       NA    
+presupuesto:PrimerGeneroMystery      2.698e+00  7.382e-01   3.655 0.000274 ***
+presupuesto:PrimerGeneroRomance     -1.426e+02  1.263e+03  -0.113 0.910143    
+presupuesto:PrimerGeneroSci-Fi      -3.600e+00  1.264e+01  -0.285 0.775927    
+presupuesto:PrimerGeneroWestern             NA         NA      NA       NA    
+startYear:popularity                 9.656e+04  6.647e+04   1.453 0.146711    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 71230000 on 805 degrees of freedom
+Multiple R-squared:  0.7551,    Adjusted R-squared:  0.742 
+F-statistic: 57.73 on 43 and 805 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modelo5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 33518.08</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modelo_optimizado)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 33156.38</code></pre>
+</div>
+</div>
+<p>Realizando la comparaciòn de nuestro modelo manual con nuestro modelo creado automàticamente con la funcion <code>step()</code> podemos apreciar:</p>
+</section>
 </section>
 
 </main>
@@ -385,8 +1654,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-      window.quartoDecorateExternalLinks = function (root) {
-     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -395,69 +1663,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
-          if (!link.classList.contains('no-external-icon')) {
-          }
         }
       }
-      };
-      window.quartoDecorateExternalLinks(window.document);
-    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
-    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
-    const hideOnEscAndFocusOut = {
-      name: 'hideOnEscAndFocusOut',
-      defaultValue: true,
-      fn(instance) {
-        const dismiss = () => {
-          // A show scheduled by the trigger delay would otherwise reopen it
-          instance.clearDelayTimeouts();
-          instance.hide();
-        };
-        const onKeyDown = (event) => {
-          if (event.key !== 'Escape') {
-            return;
-          }
-          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
-          // except an open reveal.js slide menu, which Esc should close too.
-          // The menu handles keys only when its keyboard option is on.
-          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
-            window.Reveal.getConfig().menu?.keyboard !== false;
-          if (!menuHandlesEsc) {
-            event.stopPropagation();
-          }
-          if (instance.popper.contains(window.document.activeElement)) {
-            // Disabled while refocusing so the focus trigger does not reopen it
-            instance.disable();
-            instance.reference.focus();
-            instance.enable();
-          }
-          dismiss();
-        };
-        const onFocusOut = (event) => {
-          const target = event.relatedTarget;
-          if (target && !instance.reference.contains(target) &&
-              !instance.popper.contains(target)) {
-            dismiss();
-          }
-        };
-        // On the trigger too: a click trigger (code-annotations: select) has no
-        // blur handling. Attached for the instance's lifetime so leaving the
-        // trigger also cancels a show still pending on the trigger delay.
-        instance.reference.addEventListener('focusout', onFocusOut);
-        return {
-          onShow() {
-            window.document.addEventListener('keydown', onKeyDown, true);
-            instance.popper.addEventListener('focusout', onFocusOut);
-          },
-          onHide() {
-            window.document.removeEventListener('keydown', onKeyDown, true);
-            instance.popper.removeEventListener('focusout', onFocusOut);
-          },
-          onDestroy() {
-            instance.reference.removeEventListener('focusout', onFocusOut);
-          },
-        };
-      },
-    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -471,7 +1678,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
-        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -634,54 +1840,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          // Each band is positioned against its own containing block, which is
-          // not the offsetParent of the lines, so place it from client rects.
-          const placeBand = (band, firstEl, lastEl, codeBlock) => {
-            const container = band.offsetParent;
-            if (container === null) {
-              return;
-            }
-            const containerRect = container.getBoundingClientRect();
-            // Reveal.js scales slides with a transform, so convert client
-            // pixels back to the CSS pixels of the container.
-            const scale = containerRect.height / container.offsetHeight || 1;
-            const firstRect = firstEl.getBoundingClientRect();
-            const lastRect = lastEl.getBoundingClientRect();
-            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
-            const height = (lastRect.bottom - firstRect.top) / scale;
-            band.style.top = top - 2 + "px";
-            band.style.height = height + 4 + "px";
-            if (codeBlock) {
-              // Without the copy button wrapper, the containing block is wider
-              // than the code block, so span the code block explicitly.
-              const blockRect = codeBlock.getBoundingClientRect();
-              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
-              band.style.width = blockRect.width / scale + "px";
-            }
-          };
+          let top = null;
+          let height = null;
+          let parent = null;
           if (lineIds.length > 0) {
-            const el = window.document.getElementById(lineIds[0]);
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const parent = el.parentElement.parentElement;
-            // cook up a div (if necessary) and position it
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
             }
-            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
             }
-            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -779,9 +1975,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       }
     }
   });
-  </script>
-  <script type="application/javascript">
-  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
   </script>
 </div> <!-- /content -->
 

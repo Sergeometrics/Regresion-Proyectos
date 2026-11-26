@@ -231,3 +231,180 @@ Se aprecian coeficientes de correlacion altos de `taquilla` con `popularity` y `
 Con esta informacion podremos iniciar la creacion de nuestros modelos.
 
 # Parte #3: Creación de los modelos
+
+```{r}
+#|echo: false
+#| message: false
+attach(datos_bien)
+
+```
+
+Como objetivo principal del documento se explorarà la creacion de modelos acordes a nuestra base de datos, es asì que se exploraràn distintas alternativas y se evaluaràn los fuertes de estos.
+
+Iniciamos con el primer par de modelos definidos como:
+
+```{r}
+modelo1 <- lm(taquilla ~ presupuesto + runtimeMinutes + popularity)
+summary(modelo1) #Modelo inicial
+
+modelo1_alterno <- lm(taquilla ~ presupuesto + popularity + PrimerGenero)
+summary(modelo1_alterno) 
+
+
+```
+
+Estos modelos son basados en las variables con mayores relaciones a nuestra variable objetivo `taquilla`. este se toma como punto inicial y base de la creacion manual de otros modelos.
+
+```{r}
+
+datos_m1 <- datos_bien |> mutate(residuales1 = modelo1$residuals)
+
+ggplot(data = datos_m1, aes(y = residuales1, x = numVotes)) + geom_point() +
+  geom_smooth(method = "lm") 
+```
+
+Tras realizar el examen de los residuales, se agrega `numVotes` como otra variable y se retirò `RuntimeMinutes`. Creando asì nuestro segundo modelo.
+
+```{r}
+
+modelo2 <- update(modelo1, . ~ . - runtimeMinutes + numVotes)
+summary(modelo2) 
+omcdiag(modelo2)
+imcdiag(modelo2)
+car::vif(modelo2)
+
+modelo2_alternativo <- update(modelo1, .~. -runtimeMinutes)
+summary(modelo2_alternativo)
+
+```
+
+```{r}
+#| echo: false
+#| output: false
+#| message: false
+#| warning: false
+datos_m2 <- datos_m1 |> mutate(residuales2 = modelo2$residuals,
+  residuales2Alternos = modelo2_alternativo$residuals)
+colnames(datos_m2)
+
+```
+
+Este segundo modelo retira `runtimeMinutes` e incorpora `numVotes` (solo en `modelo2` no en `modelo2_alternativo`), el cual tras realizar comprobaciones de colinealidad dan indicaciones de ser colineales (Esta relacion es entendible pues entre mas gente interactua con la pàgina de la pelìcula dada la misma obtendra mas calificaciones).
+
+Se realizan los siguientes gràficos para la comprobacion de los residuales con otras variables:
+
+```{r}
+#| echo: false
+#| #| warning: false 
+#| message: false
+ggplot(data = datos_m2, aes(y = residuales2, x = startYear*presupuesto)) + geom_point() +
+  geom_smooth(method = "lm") #la línea parece horizontal, no parece haber relación
+ggplot(data = datos_m2, aes(y = residuales2, x = startYear)) + geom_point() +
+  geom_smooth(method = "lm") #la línea parece horizontal, no parece haber relación
+
+ggplot(data = datos_m2, aes(y = residuales2Alternos, x = startYear*presupuesto)) + geom_point() +
+  geom_smooth(method = "lm") #la línea parece horizontal, no parece haber relación
+ggplot(data = datos_m2, aes(y = residuales2Alternos, x = startYear)) + geom_point() +
+  geom_smooth(method = "lm") #la línea parece horizontal, no parece haber relación
+```
+
+Tras analisar estos datos se llega a un modelo nùmero 3, donde se adapta nuestro `modelo2_alternativo` y se le agregarà la relacion `startYear:presupuesto`
+
+```{r}
+
+modelo3 <- update(modelo2_alternativo, . ~ . + startYear:presupuesto)
+summary(modelo3) 
+
+AIC(modelo2_alternativo)
+AIC(modelo3) #Mejor pero no estoy del todo seguro por el análisis visual
+
+datos_m3 <- datos_m2 |> mutate(residuales3 = modelo3$residuals)
+
+ggplot(data = datos_m3, aes(y = residuales3, x = startYear)) + geom_point() +
+  geom_smooth(method = "lm")
+
+modelo3_alterno <- update(modelo3, .~. +startYear)
+summary(modelo3_alterno)
+
+```
+
+De nuevo, se realizan verificaciones de colinealidad:
+
+```{r}
+
+omcdiag(modelo3_alterno)
+imcdiag(modelo3_alterno)
+car::vif(modelo3_alterno)
+```
+
+Con las cuales identificamos colinealidad entre presupuesto:startYear y presupuesto, la cual se agregò como prueba en `modelo3_alternativo`
+
+Se decide crear un cuarto modelo añadiendo el `averageRating`
+
+```{r}
+modelo4 <- update(modelo3, . ~ . + averageRating)
+summary(modelo4)
+
+
+modelo4_alterno <- update(modelo3, . ~ . - presupuesto:startYear + startYear)
+summary(modelo4_alterno)
+```
+
+```{r}
+#| echo: false
+#| message: false
+
+datos_m4 <- datos_m2 |> mutate(residuales = modelo4$residuals)
+
+ggplot(data = datos_m4, aes(y = residuales, x = averageRating*numVotes)) + geom_point()
+
+```
+
+Este cuarto modelo presenta mejoras en nuestro $R²_{adj}$, se adaptarà un quinto modelo probando la inclusion de `startYear`
+
+```{r}
+modelo5 <- update(modelo4, .~. +startYear)
+summary(modelo5)
+
+##Revisión multicolinealidad
+omcdiag(modelo5)
+imcdiag(modelo5)
+car::vif(modelo5) 
+
+```
+
+### Modelo optimizado, Funcion `step()`
+
+A la par de la creacion manual de nuestros modelos y llegar a nuestro modelo deseado tambien se aplicarà la funcion `step()` con el objetivo de crear un modelo optimizado de manera automàtica.
+
+Para esto se define en primer lugar nuestro modelo "full"
+
+```{r}
+#| output: false
+
+
+modelo_full <- lm(taquilla ~ (runtimeMinutes + averageRating + numVotes + presupuesto + 
+  startYear + popularity + PrimerGenero)^2)
+summary(modelo_full)
+
+```
+
+Corremos el comando `steps()`
+
+```{r}
+#| output: false
+
+modelo_optimizado <- step(modelo_full)
+
+```
+
+Y obtenemos Nuestro modelo optimizado:
+
+```{r}
+summary(modelo_optimizado)
+
+AIC(modelo5)
+AIC(modelo_optimizado)
+```
+
+Realizando la comparaciòn de nuestro modelo manual con nuestro modelo creado automàticamente con la funcion `step()` podemos apreciar:
