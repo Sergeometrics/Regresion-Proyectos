@@ -1,10 +1,10 @@
-# Regresión lineal multiple
+# Regresión lineal múltiple
 
 ## Universidad Nacional de Colombia
 
 ## 2026-2
 
-## integrantes:
+## Integrantes:
 
 #### Ana Lucia Acosta Moreno
 
@@ -12,29 +12,29 @@
 
 #### David Camero Pardo
 
-#### Camilo Andres Murcia Perdomo
+#### Camilo Andrés Murcia Perdomo
 
-# Parte #1: Introduccion y datos
+# Parte #1: Introducción y datos
 
 ## 1.1 Introducción
 
-La regresión lineal es una herramienta con la cual se busca hallar modelos que relacionen una variable respuesta con una variable explicativa. La regresion lineal **múltiple**, en cambio, relaciona más de una variable explicativa a la respuesta, dandole así un mayor potencial de explicacion al modelo propuesto a cambio de hacerlo mas complejo.
+La regresión lineal es una herramienta con la cual se busca hallar modelos que relacionen una variable respuesta con una variable explicativa. La regresión lineal **múltiple**, en cambio, relaciona más de una variable explicativa a la respuesta, dándole así un mayor potencial de explicación al modelo propuesto a cambio de hacerlo más complejo.
 
-Es así, como la regresion lineal múltiple se entiende como una generalizacion de la regresion lineal simple, una herramienta distinta con usos practicos diferentes a su alternativa de una variable. En este documento académico se usará la regresion linear multiple para adaptar un modelo explicativo, a continuacion se explicaran los objetivos, los datos y el procedimiento a seguir con el cual se realizo la creacion y uso del modelo.
+Es así como la regresión lineal múltiple se entiende como una generalización de la regresión lineal simple, una herramienta distinta con usos prácticos diferentes a su alternativa de una variable. En este documento académico se usará la regresión lineal múltiple para adaptar un modelo explicativo; a continuación se explicarán los objetivos, los datos y el procedimiento a seguir con el cual se realizó la creación y uso del modelo.
 
 (El repositorio donde se encuentran todos los distintos archivos y evidencias del proceso puede ser consultado <a href="https://github.com/Sergeometrics/Regresion-Proyectos" target="_blank" rel="noopener noreferrer">aquí</a>)
 
 ## 1.2 TMDb: La base de datos seleccionada
 
-Con el objetivo de crear un ejemplo del uso de la regresion lineal múltiple se busco una base de datos acorde encontrando así las bases de datos abiertas pertenecientes a <a href="https://www.imdb.com" target="_blank" rel="noopener noreferrer">IMDb</a> la popular pagina de rankings de television perteneciente a Amazon y el proyecto abierto de documentacion de peliculas y series de television <a href="https://www.themoviedb.org" target="_blank" rel="noopener noreferrer">The movie database (TMDb)</a> donde se encuentran datos relevantes sobre peliculas, como ingresos de taquilla fechas de estreno y otros datos relevantes.
+Con el objetivo de crear un ejemplo del uso de la regresión lineal múltiple se buscó una base de datos acorde, encontrando así las bases de datos abiertas pertenecientes a <a href="https://www.imdb.com" target="_blank" rel="noopener noreferrer">IMDb</a>, la popular página de rankings de televisión perteneciente a Amazon, y el proyecto abierto de documentación de películas y series de televisión <a href="https://www.themoviedb.org" target="_blank" rel="noopener noreferrer">The Movie Database (TMDb)</a>, donde se encuentran datos relevantes sobre películas, como ingresos de taquilla, fechas de estreno y otros datos relevantes.
 
-La obtencion de los datos a usar para el ejercicio acedemico se realiza a traves de <a href="../Setup-Inicial-IMDb.r" download>Setup-Inicial-IMDb.r</a> donde se realizan llamados a ambas fuentes seleccionadas (the movie database solicita la creacion de una API key para solicitar los datos)
+La obtención de los datos a usar para el ejercicio académico se realiza a través de <a href="../Setup-Inicial-IMDb.r" download>Setup-Inicial-IMDb.r</a>, donde se realizan llamados a ambas fuentes seleccionadas (The Movie Database solicita la creación de una API key para solicitar los datos).
 
-## 1.3 API y obtencion de los datos
+## 1.3 API y obtención de los datos
 
-El archivo <a href="../imdb_datos_completos.csv" download>imdb datos completos.csv</a> no se encuentra publicado para descarga directa por fuera de este repositorio, a continuacion se explica demanera rápida la creacion de este archivo basado en los datos bases descargables de IMDb y TMDb.
+El archivo <a href="../imdb_datos_completos.csv" download>imdb datos completos.csv</a> no se encuentra publicado para descarga directa por fuera de este repositorio. A continuación se explica de manera rápida la creación de este archivo basado en los datos bases descargables de IMDb y TMDb.
 
-La creacion de nuestro csv base que se usará atraves del documento se encuentra en <a href="../Setup-Inicial-IMDb.r" download>Setup-Inicial-IMDb.r</a>. En este documento se encuentran los siguientes comandos
+La creación de nuestro csv base que se usará a través del documento se encuentra en <a href="../Setup-Inicial-IMDb.r" download>Setup-Inicial-IMDb.r</a>. En este documento se encuentran los siguientes comandos
 
 ```{r}
 #| eval: false
@@ -56,9 +56,9 @@ imdb <- basics %>%
 
 ```
 
-(Se comentan lineas de código para evitar descargas y objetos repetidos)
+(Se comentan líneas de código para evitar descargas y objetos repetidos)
 
-Estas lineas nos dan los datos base descargados directamente de IMDb, y los filtra con nuestros individuos de interes, las peliculas.
+Estas líneas nos dan los datos base descargados directamente de IMDb y los filtran con nuestros individuos de interés, las películas.
 
 ```{r}
 #| eval: false
@@ -71,14 +71,14 @@ imdb_muestra <- imdb %>%
 
 Se filtra una muestra de 5000 películas con más de 500 votos y duración conocida.
 
-Para las bases de datos de TMDb se solicita una API en su <a href="https://developer.themoviedb.org/docs/getting-started" target="_blank" rel="noopener noreferrer">sitio óficial</a> y se define la variable en la consola corriendo:
+Para las bases de datos de TMDb se solicita una API en su <a href="https://developer.themoviedb.org/docs/getting-started" target="_blank" rel="noopener noreferrer">sitio oficial</a> y se define la variable en la consola corriendo:
 
 ``` r
 
  api_key <- "ACA QUI VA LA API KEY DE TMDB" #(correr en consola y no publicar API de uso personal)
 ```
 
-Despues de esto realilzamos las solicitudes a la base de datos creando la siguiente función:
+Después de esto realizamos las solicitudes a la base de datos creando la siguiente función:
 
 ```{r}
 #| eval: false
@@ -117,7 +117,7 @@ Despues de esto realilzamos las solicitudes a la base de datos creando la siguie
 
 La función `get_tmdb(tconst, api_key)` recibe un identificador de IMDb y una clave de TMDb. Primero crea una fila con los valores que espera obtener, luego hace dos solicitudes a la API:
 
-Busca la película en TMDb a partir del identificador IMDb, con `external_source = "imdb_id"`. Si encuentra resultados, toma la popularidad y el ID de TMDb; con ese ID solicita los detalles, donde están el presupuesto `(budget)` y los ingresos `(revenue)`. `req_retry(max_tries = 3)` permite reintentar una solicitud fallida hasta tres veces. Si TMDb devuelve presupuesto o ingresos iguales a cero, el código los convierte en `NA`. (Comando adaptado y sacado de la documentacion oficial de TMDb <a href="https://developer.themoviedb.org/docs/getting-started" target="_blank" rel="noopener noreferrer">Documentación óficial</a>)
+Busca la película en TMDb a partir del identificador IMDb, con `external_source = "imdb_id"`. Si encuentra resultados, toma la popularidad y el ID de TMDb; con ese ID solicita los detalles, donde están el presupuesto `(budget)` y los ingresos `(revenue)`. `req_retry(max_tries = 3)` permite reintentar una solicitud fallida hasta tres veces. Si TMDb devuelve presupuesto o ingresos iguales a cero, el código los convierte en `NA`. (Comando adaptado y sacado de la documentación oficial de TMDb <a href="https://developer.themoviedb.org/docs/getting-started" target="_blank" rel="noopener noreferrer">Documentación oficial</a>)
 
 ```{r}
 #| eval: false
@@ -139,48 +139,48 @@ write_csv(imdb_final, "imdb_datos_completos.csv")
 
 ```
 
-Finalmente, se solicita a la API aplicar la funcion `get_tmdb()` a cada identificador `tconst` y combina las filas devueltas en un solo data frame. así, finalmente la funcion `write_csv()`guarda los resultados de nuetras consultas en un solo <a href="../imdb_datos_completos.csv" download>imdb datos completos.csv</a> organizado.
+Finalmente, se solicita a la API aplicar la función `get_tmdb()` a cada identificador `tconst` y combina las filas devueltas en un solo data frame. Así, finalmente la función `write_csv()` guarda los resultados de nuestras consultas en un solo <a href="../imdb_datos_completos.csv" download>imdb datos completos.csv</a> organizado.
 
 ## 1.4 Las variables y la base de datos
 
-Con nuestro csv preparado, podemos empezar con los preliminares de nuestro analisis de regresion, para esto definimos nuestras variables:
+Con nuestro csv preparado, podemos empezar con los preliminares de nuestro análisis de regresión. Para esto definimos nuestras variables:
 
-1.  `tconst` : variable identificadora única (pk) de las bases de IMDb y TMDb utilidad a la hora de unir ambas bases.
+1.  `tconst`: variable identificadora única (pk) de las bases de IMDb y TMDb; utilidad a la hora de unir ambas bases.
 
-2.  `primaryTitle` : Título principal de la película en su idioma original.
+2.  `primaryTitle`: título principal de la película en su idioma original.
 
-3.  `startYear` : Año de publicacion de la película.
+3.  `startYear`: año de publicación de la película.
 
-4.  `runtimeMinutes` : Duracion en minutos de la cinta.
+4.  `runtimeMinutes`: duración en minutos de la cinta.
 
-5.  `genres` : generos de la película, separados por comas.
+5.  `genres`: géneros de la película, separados por comas.
 
-6.  `averageRating` : calificacion promedio de los usuarios.
+6.  `averageRating`: calificación promedio de los usuarios.
 
-7.  `nunmVotes` : número de usuarios que calificaron la película.
+7.  `numVotes`: número de usuarios que calificaron la película.
 
-8.  `presupuesto` : presupuesto para la realilzazcion de la película en USD.
+8.  `presupuesto`: presupuesto para la realización de la película en USD.
 
-9.  `taquilla` : ingresos de la película en taquilla
+9.  `taquilla`: ingresos de la película en taquilla.
 
-10. `popularity` : score calculado diariamente por TMDb que combina la actividad reciente en su plataforma alrededor de la película (no tiene unidades establecidas o públicas, se interpreta como in indicador de las interacciones con la pelicula dada)
+10. `popularity`: score calculado diariamente por TMDb que combina la actividad reciente en su plataforma alrededor de la película (no tiene unidades establecidas o públicas, se interpreta como un indicador de las interacciones con la película dada).
 
-# Parte #2: preliminares, hipotesis y analisis exploratorio
+# Parte #2: preliminares, hipótesis y análisis exploratorio
 
-Como primera accion tras tener nuestros datos preparados y leer nuestras variables vamos a definir una variable objetivo, en este caso, la variable de interés será `taquilla` y se intentará adaptar un modelo que explique el comportamiento de esta en base a los demás datos. Preliminarmente se teorizan correlaciones altas de `taquilla` con variables como `popularity`, `presupuesto` y `rating`.
+Como primera acción, tras tener nuestros datos preparados y leer nuestras variables, vamos a definir una variable objetivo; en este caso, la variable de interés será `taquilla` y se intentará adaptar un modelo que explique el comportamiento de esta en base a los demás datos. Preliminarmente se teorizan correlaciones altas de `taquilla` con variables como `popularity`, `presupuesto` y `rating`.
 
-Es así que con un objetivo claro, se realizará un analisis exploratorio de nuestras variables, buscando inicialmente relaciones de nuestras otras variables con `taquilla`.
+Es así que, con un objetivo claro, se realizará un análisis exploratorio de nuestras variables, buscando inicialmente relaciones de nuestras otras variables con `taquilla`.
 
-El archivo de .r donde se encuentra el codigo entero es: `<a href="Modelos_lineales_múltiples.r" download>Modelos_lineales_múltiples`{=html}.r</a>, en este mismo documento se explicará mas a fondo el desarrollo del código del archivo adjunto.
+El archivo de `.r` donde se encuentra el código entero es: `<a href="Modelos_lineales_múltiples.r" download>Modelos_lineales_múltiples`{=html}.r</a>. En este mismo documento se explicará más a fondo el desarrollo del código del archivo adjunto.
 
-Inicialmente se realizan preliminares del archivo como librerias y lectura/adaptacion de los datos
+Inicialmente se realizan preliminares del archivo como librerías y lectura/adaptación de los datos
 
 ```{r}
 #| output: false
 #| warning: false 
 #| message: false
 
-
+library(zoo)
 library(readr)
 library(ggplot2)
 library(dplyr)
@@ -188,6 +188,8 @@ library(tidyverse)
 library(mctest)
 library(car)
 library(GGally)
+library(nortest)
+library(lmtest)
 
 imdb_datos_completos  <- read_csv("../imdb_datos_completos.csv")
 
@@ -202,7 +204,7 @@ datos_bien <- datos_bien1 |> filter(if_all(everything(), ~ !is.na(.x)))
 
 ```
 
-Así, realizamos el analisis de los distintos gráficos de nuetras variables comparadas con `taquilla`
+Así, realizamos el análisis de los distintos gráficos de nuestras variables comparadas con `taquilla`
 
 ```{r}
 #| echo: false
@@ -226,9 +228,9 @@ ggplot(data = datos_bien, aes(x = popularity, y = taquilla)) + geom_point() +
 ggplot(data = datos_bien, aes(x = PrimerGenero, y = taquilla)) + geom_boxplot()
 ```
 
-Se aprecian coeficientes de correlacion altos de `taquilla` con `popularity` y `numVotes`, tal y como se esperaba , aquí el gráfico que más nos brinda informacion es el `ggpairs` de la libreria `GGally` al brindarnos una vision global de las interacciones de nuestras variables.
+Se aprecian coeficientes de correlación altos de `taquilla` con `popularity` y `numVotes`, tal y como se esperaba. Aquí el gráfico que más nos brinda información es el `ggpairs` de la librería `GGally`, al brindarnos una visión global de las interacciones de nuestras variables.
 
-Con esta informacion podremos iniciar la creacion de nuestros modelos.
+Con esta información podremos iniciar la creación de nuestros modelos.
 
 # Parte #3: Creación de los modelos
 
@@ -239,7 +241,7 @@ attach(datos_bien)
 
 ```
 
-Como objetivo principal del documento se explorarà la creacion de modelos acordes a nuestra base de datos, es asì que se exploraràn distintas alternativas y se evaluaràn los fuertes de estos.
+Como objetivo principal del documento se explorará la creación de modelos acordes a nuestra base de datos, es así que se explorarán distintas alternativas y se evaluarán las fortalezas de estos.
 
 ### 3.1 Modelos creados manualmente.
 
@@ -255,17 +257,16 @@ summary(modelo1_alterno)
 
 ```
 
-Estos modelos son basados en las variables con mayores relaciones a nuestra variable objetivo `taquilla`. este se toma como punto inicial y base de la creacion manual de otros modelos.
+Estos modelos están basados en las variables con mayores relaciones a nuestra variable objetivo `taquilla`. Este se toma como punto inicial y base de la creación manual de otros modelos.
 
 ```{r}
-
 datos_m1 <- datos_bien |> mutate(residuales1 = modelo1$residuals)
 
 ggplot(data = datos_m1, aes(y = residuales1, x = numVotes)) + geom_point() +
   geom_smooth(method = "lm") 
 ```
 
-Tras realizar el examen de los residuales, se agrega `numVotes` como otra variable y se retirò `RuntimeMinutes`. Creando asì nuestro segundo modelo.
+Tras realizar el examen de los residuales, se agrega `numVotes` como otra variable y se retiró `runtimeMinutes`. Creando así nuestro segundo modelo.
 
 ```{r}
 
@@ -291,9 +292,17 @@ colnames(datos_m2)
 
 ```
 
-Este segundo modelo retira `runtimeMinutes` e incorpora `numVotes` (solo en `modelo2` no en `modelo2_alternativo`), el cual tras realizar comprobaciones de colinealidad dan indicaciones de ser colineales (Esta relacion es entendible pues entre mas gente interactua con la pàgina de la pelìcula dada la misma obtendra mas calificaciones).
+```{r}
 
-Se realizan los siguientes gràficos para la comprobacion de los residuales con otras variables:
+datos_m1 <- datos_bien |> mutate(residuales1 = modelo1$residuals)
+
+ggplot(data = datos_m1, aes(y = residuales1, x = numVotes)) + geom_point() +
+  geom_smooth(method = "lm") 
+```
+
+Este segundo modelo retira `runtimeMinutes` e incorpora `numVotes` (solo en `modelo2`, no en `modelo2_alternativo`), el cual, tras realizar comprobaciones de colinealidad, da indicaciones de ser colineales (Esta relación es entendible, pues entre más gente interactúa con la página de la película dada, la misma obtendrá más calificaciones).
+
+Se realizan los siguientes gráficos para la comprobación de los residuales con otras variables:
 
 ```{r}
 #| echo: false
@@ -310,7 +319,7 @@ ggplot(data = datos_m2, aes(y = residuales2Alternos, x = startYear)) + geom_poin
   geom_smooth(method = "lm") #la línea parece horizontal, no parece haber relación
 ```
 
-Tras analisar estos datos se llega a un modelo nùmero 3, donde se adapta nuestro `modelo2_alternativo` y se le agregarà la relacion `startYear:presupuesto`
+Tras analizar estos datos se llega a un modelo número 3, donde se adapta nuestro `modelo2_alternativo` y se le agregará la relación `startYear:presupuesto`
 
 ```{r}
 
@@ -339,7 +348,7 @@ imcdiag(modelo3_alterno)
 car::vif(modelo3_alterno)
 ```
 
-Con las cuales identificamos colinealidad entre presupuesto:startYear y presupuesto, la cual se agregò como prueba en `modelo3_alternativo`
+Con las cuales identificamos colinealidad entre `presupuesto:startYear` y `presupuesto`, la cual se agregó como prueba en `modelo3_alternativo`
 
 Se decide crear un cuarto modelo añadiendo el `averageRating`
 
@@ -362,7 +371,7 @@ ggplot(data = datos_m4, aes(y = residuales, x = averageRating*numVotes)) + geom_
 
 ```
 
-Este cuarto modelo presenta mejoras en nuestro $R²_{adj}$, se adaptarà un quinto modelo probando la inclusion de `startYear` , `averageRating` y `presupuesto:startYear` al tercer modelo.
+Este cuarto modelo presenta mejoras en nuestro $R²_{adj}$, se adaptará un quinto modelo probando la inclusión de `startYear`, `averageRating` y `presupuesto:startYear` al tercer modelo.
 
 ```{r}
 modelo5 <- update(modelo3, . ~ . - presupuesto:startYear + startYear + averageRating)
@@ -375,7 +384,7 @@ car::vif(modelo5)
 
 ```
 
-Como untimo cambio a nuestro modelo creado de manera manual crearemos la sexta iteracion de nuestro modelo creado "a ojo" eliminando la variable `startYear` por la colinealidad con `startYear:presupuesto`
+Como último cambio a nuestro modelo creado de manera manual crearemos la sexta iteración de nuestro modelo creado "a ojo", eliminando la variable `startYear` por la colinealidad con `startYear:presupuesto`.
 
 ```{r}
 modelo6 <- update(modelo5, .~. - startYear)
@@ -386,13 +395,13 @@ imcdiag(modelo6)
 car::vif(modelo6)
 ```
 
-Este último modelo creado manualmente se adapta de manera correcta a nuestros objetivos, a continuacion se compará al modelo creado automáticamente por el comando `step()`.
+Este último modelo creado manualmente se adapta de manera correcta a nuestros objetivos. A continuación se comparará con el modelo creado automáticamente por el comando `step()`.
 
-### 3.2 Modelo optimizado, Funcion `step()`
+### 3.2 Modelo optimizado, función `step()`
 
-A la par de la creacion manual de nuestros modelos y llegar a nuestro modelo deseado tambien se aplicarà la funcion `step()` con el objetivo de crear un modelo optimizado de manera automàtica.
+A la par de la creación manual de nuestros modelos y llegar a nuestro modelo deseado, también se aplicará la función `step()` con el objetivo de crear un modelo optimizado de manera automática.
 
-Para esto se define en primer lugar nuestro modelo "full", o en este caso, 2 modelos "full"; uno incluyendo nuestra varriable categorica `PrimerGenero` y otra sin esta categórica
+Para esto se define en primer lugar nuestro modelo "full", o en este caso, dos modelos "full": uno incluyendo nuestra variable categórica `PrimerGenero` y otra sin esta categórica
 
 ```{r}
 #| output: false
@@ -408,7 +417,7 @@ summary(modelo_full2)
 
 ```
 
-Corremos el comando `steps()`
+Corremos el comando `step()`
 
 ```{r}
 #| output: false
@@ -433,14 +442,120 @@ AIC(modelo_optimizado)
 
 ### 3.3 Comparación de nuestros 3 modelos finalistas
 
-Realizando la comparaciòn de nuestro modelo manual con nuestro modelo creado automàticamente con la funcion `step()` podemos apreciar:
+Realizando la comparación de nuestro modelo manual con nuestro modelo creado automáticamente con la función `step()` podemos apreciar:
 
-Nuestro modelo con mejor valor de `AIC` es nuestro modelo optimizado con todas las variables (incluyendo nuestras categóricas de `primerGenero` relacionadas con la variable de presupuesto) esto quiere decir una cantidad enorme de estimados de los cuales son muy pocos los realmente significantes.
+Nuestro modelo con mejor valor de `AIC` es nuestro modelo optimizado con todas las variables (incluyendo nuestras categóricas de `primerGenero` relacionadas con la variable de presupuesto), esto quiere decir una cantidad enorme de estimados de los cuales son muy pocos los realmente significantes.
 
-Nuestro segundo mejor modelo fue el segundo optimizado del comando `steps()`, el cual, aunque con un AIC mayor a nuestro `modelo_optimizado` original este tiene una disminucion notable del numero de variables y del porcentaje de estas que podemos considerar estadisticamente significativas.
+Nuestro segundo mejor modelo fue el segundo optimizado del comando `step()`, el cual, aunque con un AIC mayor a nuestro `modelo_optimizado` original, tiene una disminución notable del número de variables y del porcentaje de estas que podemos considerar estadísticamente significativas.
 
-Nuestro tercer modelo, el "creado manualmente" se queda rezagado comparado a los otros 2 al comparar tanto el AIC como el $R²_{adj}$, siendo este el modelo inferior a pesar de su sencilles.
+Nuestro tercer modelo, el "creado manualmente", se queda rezagado comparado a los otros 2 al comparar tanto el AIC como el $R²_{adj}$, siendo este el modelo inferior a pesar de su sencillez.
 
-# Parte #4 validacion del modelo
+# Parte #4: Predicciones usando el modelo optimizado 2
 
-Se realizan las siguientes comprobaciones y test a nuestro modelo elegido
+Se elige el modelo optimizado 2 como modelo a utilizar para realizar predicciones. En este caso se añadirán datos de 3 películas hipotéticas, creando así el objeto `nuevas_peliculas`, donde se mostrarán los resultados.
+
+```{r}
+nuevas_peliculas <- data.frame(
+  runtimeMinutes = c(100, 120, 140),
+  averageRating = c(5.5, 6.5, 7.5),
+  numVotes = c(50000, 150000, 500000),
+  presupuesto = c(10000000, 30000000, 80000000),
+  startYear = c(2010, 2015, 2020),
+  popularity = c(10, 30, 70)
+)
+
+intervalos_confianza <- predict(modelo_optimizado2,
+                                newdata = nuevas_peliculas,
+                                interval = "confidence",
+                                level = 0.95)
+
+intervalos_prediccion <- predict(modelo_optimizado2,
+                                 newdata = nuevas_peliculas,
+                                 interval = "prediction",
+                                 level = 0.95)
+
+nuevas_peliculas$taquilla_predicha <- intervalos_confianza[, "fit"]
+nuevas_peliculas$limite_inferior_confianza <- intervalos_confianza[, "lwr"]
+nuevas_peliculas$limite_superior_confianza <- intervalos_confianza[, "upr"]
+nuevas_peliculas$limite_inferior_prediccion <- intervalos_prediccion[, "lwr"]
+nuevas_peliculas$limite_superior_prediccion <- intervalos_prediccion[, "upr"]
+
+
+```
+
+Así podemos ver nuestras predicciones como:
+
+```{r}
+#| echo: false
+nuevas_peliculas
+```
+
+# Parte #5 validación del modelo
+
+Se realizan las siguientes comprobaciones y test a nuestro modelo elegido `modelo_optimizado2`.
+
+```{r}
+#| echo: false
+
+qqnorm(modelo_optimizado2$residuals)
+qqline(modelo_optimizado2$residuals)
+
+```
+
+Por el gráfico podemos observar que se presenta cierta normalidad en los datos exceptuando un peso visible en las colas.
+
+```{r}
+#| echo: false
+
+shapiro.test(modelo_optimizado2$residuals)
+lillie.test(modelo_optimizado2$residuals)
+ad.test(modelo_optimizado2$residuals)
+```
+
+Bajo las pruebas de normalidad podemos observar que no se presenta normalidad en los residuales.
+
+```{r}
+#| echo: false
+
+ plot(modelo_optimizado2, which=3, col=c("blue")) 
+
+bptest(modelo_optimizado2)
+ncvTest(modelo_optimizado2) 
+```
+
+En el gráfico podemos observar indicios de heterocedasticidad en el modelo, lo que significa que el supuesto de homocedasticidad podría estar incumpliéndose, y con los test realizados podemos ver que no se cumple la homocedasticidad.
+
+```{r}
+#| echo: false 
+plot(modelo_optimizado2, which=5, col=c("blue"))
+
+datos_bien[456,]
+datos_bien[425,]
+datos_bien[769,]  
+
+```
+
+Se observan algunas películas influyentes, como *Furious 7*, *Jurassic Park* y *The Battle at Lake Changjin*. Deben revisarse antes de determinar si representan valores atípicos válidos o errores en los datos.
+
+```{r}
+#| echo: false
+
+ggplot(data = datos_bien, aes(x = modelo_optimizado2$fitted.values, y = modelo_optimizado2$residuals)) +
+  geom_point() 
+```
+
+En este gráfico se aprecia que la dispersión de los residuales aumenta en algunos valores ajustados mayores, lo que refuerza la presencia de heterocedasticidad.
+
+```{r}
+#| echo: false
+
+plot(modelo_optimizado2, which=1, col=c("blue")) 
+
+dwtest(modelo_optimizado2) 
+```
+
+El gráfico no muestra una relación marcada entre los residuales y los valores ajustados, aunque aparecen varios errores de gran magnitud. El test de Durbin-Watson ($DW=1.9442$, $p=0.2092$) no presenta evidencia suficiente de autocorrelación positiva en los residuales.
+
+# Parte #6 Conclusión y cierre
+
+El análisis muestra que el `modelo_optimizado2` explica aproximadamente el $73.21\%$ de la variación de la taquilla y ofrece predicciones junto con intervalos de confianza y predicción del $95\%$. Sin embargo, los residuales no cumplen la normalidad ni la homocedasticidad, por lo que sus intervalos e inferencias deben interpretarse con cautela. En general, el presupuesto, los votos, la popularidad y sus interacciones son importantes para estimar la taquilla, aunque conviene revisar las observaciones influyentes antes de aplicar el modelo a películas nuevas, todo esto teniendo en cuenta la volatilidad de la industria del cine.

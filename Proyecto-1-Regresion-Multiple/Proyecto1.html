@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.11.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -67,14 +67,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="Proyecto1_files/libs/clipboard/clipboard.min.js"></script>
 <script src="Proyecto1_files/libs/quarto-html/quarto.js" type="module"></script>
 <script src="Proyecto1_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="Proyecto1_files/libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="Proyecto1_files/libs/quarto-html/popper.min.js"></script>
 <script src="Proyecto1_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="Proyecto1_files/libs/quarto-html/anchor.min.js"></script>
 <link href="Proyecto1_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="Proyecto1_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="Proyecto1_files/libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="Proyecto1_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="Proyecto1_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="Proyecto1_files/libs/bootstrap/bootstrap-4efa5a77664b5d5f81c144e9b61531e9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="Proyecto1_files/libs/bootstrap/bootstrap-943e08653f4bd8ac7ab9292bfc489267.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
@@ -108,17 +109,17 @@ window.Quarto = {
 
 </head>
 
-<body class="fullcontent quarto-light">
+<body class="fullcontent quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
 
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content" tabindex="-1">
 
 
 
 
-<section id="regresión-lineal-multiple" class="level1">
-<h1>Regresión lineal multiple</h1>
+<section id="regresión-lineal-múltiple" class="level1">
+<h1>Regresión lineal múltiple</h1>
 <section id="universidad-nacional-de-colombia" class="level2">
 <h2 class="anchored" data-anchor-id="universidad-nacional-de-colombia">Universidad Nacional de Colombia</h2>
 </section>
@@ -126,7 +127,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="section">2026-2</h2>
 </section>
 <section id="integrantes" class="level2">
-<h2 class="anchored" data-anchor-id="integrantes">integrantes:</h2>
+<h2 class="anchored" data-anchor-id="integrantes">Integrantes:</h2>
 <section id="ana-lucia-acosta-moreno" class="level4">
 <h4 class="anchored" data-anchor-id="ana-lucia-acosta-moreno">Ana Lucia Acosta Moreno</h4>
 </section>
@@ -136,28 +137,28 @@ window.Quarto = {
 <section id="david-camero-pardo" class="level4">
 <h4 class="anchored" data-anchor-id="david-camero-pardo">David Camero Pardo</h4>
 </section>
-<section id="camilo-andres-murcia-perdomo" class="level4">
-<h4 class="anchored" data-anchor-id="camilo-andres-murcia-perdomo">Camilo Andres Murcia Perdomo</h4>
+<section id="camilo-andrés-murcia-perdomo" class="level4">
+<h4 class="anchored" data-anchor-id="camilo-andrés-murcia-perdomo">Camilo Andrés Murcia Perdomo</h4>
 </section>
 </section>
 </section>
-<section id="parte-1-introduccion-y-datos" class="level1">
-<h1>Parte #1: Introduccion y datos</h1>
+<section id="parte-1-introducción-y-datos" class="level1">
+<h1>Parte #1: Introducción y datos</h1>
 <section id="introducción" class="level2">
 <h2 class="anchored" data-anchor-id="introducción">1.1 Introducción</h2>
-<p>La regresión lineal es una herramienta con la cual se busca hallar modelos que relacionen una variable respuesta con una variable explicativa. La regresion lineal <strong>múltiple</strong>, en cambio, relaciona más de una variable explicativa a la respuesta, dandole así un mayor potencial de explicacion al modelo propuesto a cambio de hacerlo mas complejo.</p>
-<p>Es así, como la regresion lineal múltiple se entiende como una generalizacion de la regresion lineal simple, una herramienta distinta con usos practicos diferentes a su alternativa de una variable. En este documento académico se usará la regresion linear multiple para adaptar un modelo explicativo, a continuacion se explicaran los objetivos, los datos y el procedimiento a seguir con el cual se realizo la creacion y uso del modelo.</p>
+<p>La regresión lineal es una herramienta con la cual se busca hallar modelos que relacionen una variable respuesta con una variable explicativa. La regresión lineal <strong>múltiple</strong>, en cambio, relaciona más de una variable explicativa a la respuesta, dándole así un mayor potencial de explicación al modelo propuesto a cambio de hacerlo más complejo.</p>
+<p>Es así como la regresión lineal múltiple se entiende como una generalización de la regresión lineal simple, una herramienta distinta con usos prácticos diferentes a su alternativa de una variable. En este documento académico se usará la regresión lineal múltiple para adaptar un modelo explicativo; a continuación se explicarán los objetivos, los datos y el procedimiento a seguir con el cual se realizó la creación y uso del modelo.</p>
 <p>(El repositorio donde se encuentran todos los distintos archivos y evidencias del proceso puede ser consultado <a href="https://github.com/Sergeometrics/Regresion-Proyectos" target="_blank" rel="noopener noreferrer">aquí</a>)</p>
 </section>
 <section id="tmdb-la-base-de-datos-seleccionada" class="level2">
 <h2 class="anchored" data-anchor-id="tmdb-la-base-de-datos-seleccionada">1.2 TMDb: La base de datos seleccionada</h2>
-<p>Con el objetivo de crear un ejemplo del uso de la regresion lineal múltiple se busco una base de datos acorde encontrando así las bases de datos abiertas pertenecientes a <a href="https://www.imdb.com" target="_blank" rel="noopener noreferrer">IMDb</a> la popular pagina de rankings de television perteneciente a Amazon y el proyecto abierto de documentacion de peliculas y series de television <a href="https://www.themoviedb.org" target="_blank" rel="noopener noreferrer">The movie database (TMDb)</a> donde se encuentran datos relevantes sobre peliculas, como ingresos de taquilla fechas de estreno y otros datos relevantes.</p>
-<p>La obtencion de los datos a usar para el ejercicio acedemico se realiza a traves de <a href="../Setup-Inicial-IMDb.r" download="">Setup-Inicial-IMDb.r</a> donde se realizan llamados a ambas fuentes seleccionadas (the movie database solicita la creacion de una API key para solicitar los datos)</p>
+<p>Con el objetivo de crear un ejemplo del uso de la regresión lineal múltiple se buscó una base de datos acorde, encontrando así las bases de datos abiertas pertenecientes a <a href="https://www.imdb.com" target="_blank" rel="noopener noreferrer">IMDb</a>, la popular página de rankings de televisión perteneciente a Amazon, y el proyecto abierto de documentación de películas y series de televisión <a href="https://www.themoviedb.org" target="_blank" rel="noopener noreferrer">The Movie Database (TMDb)</a>, donde se encuentran datos relevantes sobre películas, como ingresos de taquilla, fechas de estreno y otros datos relevantes.</p>
+<p>La obtención de los datos a usar para el ejercicio académico se realiza a través de <a href="../Setup-Inicial-IMDb.r" download="">Setup-Inicial-IMDb.r</a>, donde se realizan llamados a ambas fuentes seleccionadas (The Movie Database solicita la creación de una API key para solicitar los datos).</p>
 </section>
-<section id="api-y-obtencion-de-los-datos" class="level2">
-<h2 class="anchored" data-anchor-id="api-y-obtencion-de-los-datos">1.3 API y obtencion de los datos</h2>
-<p>El archivo <a href="../imdb_datos_completos.csv" download="">imdb datos completos.csv</a> no se encuentra publicado para descarga directa por fuera de este repositorio, a continuacion se explica demanera rápida la creacion de este archivo basado en los datos bases descargables de IMDb y TMDb.</p>
-<p>La creacion de nuestro csv base que se usará atraves del documento se encuentra en <a href="../Setup-Inicial-IMDb.r" download="">Setup-Inicial-IMDb.r</a>. En este documento se encuentran los siguientes comandos</p>
+<section id="api-y-obtención-de-los-datos" class="level2">
+<h2 class="anchored" data-anchor-id="api-y-obtención-de-los-datos">1.3 API y obtención de los datos</h2>
+<p>El archivo <a href="../imdb_datos_completos.csv" download="">imdb datos completos.csv</a> no se encuentra publicado para descarga directa por fuera de este repositorio. A continuación se explica de manera rápida la creación de este archivo basado en los datos bases descargables de IMDb y TMDb.</p>
+<p>La creación de nuestro csv base que se usará a través del documento se encuentra en <a href="../Setup-Inicial-IMDb.r" download="">Setup-Inicial-IMDb.r</a>. En este documento se encuentran los siguientes comandos</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  download.file("https://datasets.imdbws.com/title.basics.tsv.gz", "title.basics.tsv.gz")</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#  download.file("https://datasets.imdbws.com/title.ratings.tsv.gz", "title.ratings.tsv.gz")</span></span>
@@ -171,8 +172,8 @@ window.Quarto = {
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(tconst, primaryTitle, startYear, runtimeMinutes,</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>         genres, averageRating, numVotes)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>(Se comentan lineas de código para evitar descargas y objetos repetidos)</p>
-<p>Estas lineas nos dan los datos base descargados directamente de IMDb, y los filtra con nuestros individuos de interes, las peliculas.</p>
+<p>(Se comentan líneas de código para evitar descargas y objetos repetidos)</p>
+<p>Estas líneas nos dan los datos base descargados directamente de IMDb y los filtran con nuestros individuos de interés, las películas.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)   <span class="co"># reproducible sample</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>imdb_muestra <span class="ot">&lt;-</span> imdb <span class="sc">%&gt;%</span></span>
@@ -180,10 +181,10 @@ window.Quarto = {
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">5000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Se filtra una muestra de 5000 películas con más de 500 votos y duración conocida.</p>
-<p>Para las bases de datos de TMDb se solicita una API en su <a href="https://developer.themoviedb.org/docs/getting-started" target="_blank" rel="noopener noreferrer">sitio óficial</a> y se define la variable en la consola corriendo:</p>
+<p>Para las bases de datos de TMDb se solicita una API en su <a href="https://developer.themoviedb.org/docs/getting-started" target="_blank" rel="noopener noreferrer">sitio oficial</a> y se define la variable en la consola corriendo:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a> api_key <span class="ot">&lt;-</span> <span class="st">"ACA QUI VA LA API KEY DE TMDB"</span> <span class="co">#(correr en consola y no publicar API de uso personal)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Despues de esto realilzamos las solicitudes a la base de datos creando la siguiente función:</p>
+<p>Después de esto realizamos las solicitudes a la base de datos creando la siguiente función:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>  get_tmdb <span class="ot">&lt;-</span> <span class="cf">function</span>(tconst, api_key) {</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">tconst =</span> tconst,</span>
@@ -218,7 +219,7 @@ window.Quarto = {
 <span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>La función <code>get_tmdb(tconst, api_key)</code> recibe un identificador de IMDb y una clave de TMDb. Primero crea una fila con los valores que espera obtener, luego hace dos solicitudes a la API:</p>
-<p>Busca la película en TMDb a partir del identificador IMDb, con <code>external_source = "imdb_id"</code>. Si encuentra resultados, toma la popularidad y el ID de TMDb; con ese ID solicita los detalles, donde están el presupuesto <code>(budget)</code> y los ingresos <code>(revenue)</code>. <code>req_retry(max_tries = 3)</code> permite reintentar una solicitud fallida hasta tres veces. Si TMDb devuelve presupuesto o ingresos iguales a cero, el código los convierte en <code>NA</code>. (Comando adaptado y sacado de la documentacion oficial de TMDb <a href="https://developer.themoviedb.org/docs/getting-started" target="_blank" rel="noopener noreferrer">Documentación óficial</a>)</p>
+<p>Busca la película en TMDb a partir del identificador IMDb, con <code>external_source = "imdb_id"</code>. Si encuentra resultados, toma la popularidad y el ID de TMDb; con ese ID solicita los detalles, donde están el presupuesto <code>(budget)</code> y los ingresos <code>(revenue)</code>. <code>req_retry(max_tries = 3)</code> permite reintentar una solicitud fallida hasta tres veces. Si TMDb devuelve presupuesto o ingresos iguales a cero, el código los convierte en <code>NA</code>. (Comando adaptado y sacado de la documentación oficial de TMDb <a href="https://developer.themoviedb.org/docs/getting-started" target="_blank" rel="noopener noreferrer">Documentación oficial</a>)</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>resultados <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(imdb_muestra<span class="sc">$</span>tconst,</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                      get_tmdb,</span>
@@ -236,52 +237,55 @@ window.Quarto = {
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(resultados, <span class="st">"imdb_taquilla_presupuesto.csv"</span>)</span>
 <span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(imdb_final, <span class="st">"imdb_datos_completos.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Finalmente, se solicita a la API aplicar la funcion <code>get_tmdb()</code> a cada identificador <code>tconst</code> y combina las filas devueltas en un solo data frame. así, finalmente la funcion <code>write_csv()</code>guarda los resultados de nuetras consultas en un solo <a href="../imdb_datos_completos.csv" download="">imdb datos completos.csv</a> organizado.</p>
+<p>Finalmente, se solicita a la API aplicar la función <code>get_tmdb()</code> a cada identificador <code>tconst</code> y combina las filas devueltas en un solo data frame. Así, finalmente la función <code>write_csv()</code> guarda los resultados de nuestras consultas en un solo <a href="../imdb_datos_completos.csv" download="">imdb datos completos.csv</a> organizado.</p>
 </section>
 <section id="las-variables-y-la-base-de-datos" class="level2">
 <h2 class="anchored" data-anchor-id="las-variables-y-la-base-de-datos">1.4 Las variables y la base de datos</h2>
-<p>Con nuestro csv preparado, podemos empezar con los preliminares de nuestro analisis de regresion, para esto definimos nuestras variables:</p>
+<p>Con nuestro csv preparado, podemos empezar con los preliminares de nuestro análisis de regresión. Para esto definimos nuestras variables:</p>
 <ol type="1">
-<li><p><code>tconst</code> : variable identificadora única (pk) de las bases de IMDb y TMDb utilidad a la hora de unir ambas bases.</p></li>
-<li><p><code>primaryTitle</code> : Título principal de la película en su idioma original.</p></li>
-<li><p><code>startYear</code> : Año de publicacion de la película.</p></li>
-<li><p><code>runtimeMinutes</code> : Duracion en minutos de la cinta.</p></li>
-<li><p><code>genres</code> : generos de la película, separados por comas.</p></li>
-<li><p><code>averageRating</code> : calificacion promedio de los usuarios.</p></li>
-<li><p><code>nunmVotes</code> : número de usuarios que calificaron la película.</p></li>
-<li><p><code>presupuesto</code> : presupuesto para la realilzazcion de la película en USD.</p></li>
-<li><p><code>taquilla</code> : ingresos de la película en taquilla</p></li>
-<li><p><code>popularity</code> : score calculado diariamente por TMDb que combina la actividad reciente en su plataforma alrededor de la película (no tiene unidades establecidas o públicas, se interpreta como in indicador de las interacciones con la pelicula dada)</p></li>
+<li><p><code>tconst</code>: variable identificadora única (pk) de las bases de IMDb y TMDb; utilidad a la hora de unir ambas bases.</p></li>
+<li><p><code>primaryTitle</code>: título principal de la película en su idioma original.</p></li>
+<li><p><code>startYear</code>: año de publicación de la película.</p></li>
+<li><p><code>runtimeMinutes</code>: duración en minutos de la cinta.</p></li>
+<li><p><code>genres</code>: géneros de la película, separados por comas.</p></li>
+<li><p><code>averageRating</code>: calificación promedio de los usuarios.</p></li>
+<li><p><code>numVotes</code>: número de usuarios que calificaron la película.</p></li>
+<li><p><code>presupuesto</code>: presupuesto para la realización de la película en USD.</p></li>
+<li><p><code>taquilla</code>: ingresos de la película en taquilla.</p></li>
+<li><p><code>popularity</code>: score calculado diariamente por TMDb que combina la actividad reciente en su plataforma alrededor de la película (no tiene unidades establecidas o públicas, se interpreta como un indicador de las interacciones con la película dada).</p></li>
 </ol>
 </section>
 </section>
-<section id="parte-2-preliminares-hipotesis-y-analisis-exploratorio" class="level1">
-<h1>Parte #2: preliminares, hipotesis y analisis exploratorio</h1>
-<p>Como primera accion tras tener nuestros datos preparados y leer nuestras variables vamos a definir una variable objetivo, en este caso, la variable de interés será <code>taquilla</code> y se intentará adaptar un modelo que explique el comportamiento de esta en base a los demás datos. Preliminarmente se teorizan correlaciones altas de <code>taquilla</code> con variables como <code>popularity</code>, <code>presupuesto</code> y <code>rating</code>.</p>
-<p>Es así que con un objetivo claro, se realizará un analisis exploratorio de nuestras variables, buscando inicialmente relaciones de nuestras otras variables con <code>taquilla</code>.</p>
-<p>El archivo de .r donde se encuentra el codigo entero es: <a href="Modelos_lineales_múltiples.r" download="">Modelos_lineales_múltiples.r</a>, en este mismo documento se explicará mas a fondo el desarrollo del código del archivo adjunto.</p>
-<p>Inicialmente se realizan preliminares del archivo como librerias y lectura/adaptacion de los datos</p>
+<section id="parte-2-preliminares-hipótesis-y-análisis-exploratorio" class="level1">
+<h1>Parte #2: preliminares, hipótesis y análisis exploratorio</h1>
+<p>Como primera acción, tras tener nuestros datos preparados y leer nuestras variables, vamos a definir una variable objetivo; en este caso, la variable de interés será <code>taquilla</code> y se intentará adaptar un modelo que explique el comportamiento de esta en base a los demás datos. Preliminarmente se teorizan correlaciones altas de <code>taquilla</code> con variables como <code>popularity</code>, <code>presupuesto</code> y <code>rating</code>.</p>
+<p>Es así que, con un objetivo claro, se realizará un análisis exploratorio de nuestras variables, buscando inicialmente relaciones de nuestras otras variables con <code>taquilla</code>.</p>
+<p>El archivo de <code>.r</code> donde se encuentra el código entero es: <a href="Modelos_lineales_múltiples.r" download="">Modelos_lineales_múltiples.r</a>. En este mismo documento se explicará más a fondo el desarrollo del código del archivo adjunto.</p>
+<p>Inicialmente se realizan preliminares del archivo como librerías y lectura/adaptación de los datos</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mctest)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>imdb_datos_completos  <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../imdb_datos_completos.csv"</span>)</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(zoo)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mctest)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nortest)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a> <span class="fu">colnames</span>(imdb_datos_completos)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>imdb_datos_completos  <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../imdb_datos_completos.csv"</span>)</span>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>datos_bien1 <span class="ot">&lt;-</span> imdb_datos_completos <span class="sc">|&gt;</span> </span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">PrimerGenero =</span> <span class="fu">word</span>(genres, <span class="dv">1</span>, <span class="at">sep =</span> <span class="st">","</span>)) <span class="co">#Añade una nueva columna para usar </span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>      <span class="co">#solo el primer género de la pelicula, pues con tres se forman muchas cátegorias</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>datos_bien <span class="ot">&lt;-</span> datos_bien1 <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="fu">if_all</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="sc">!</span><span class="fu">is.na</span>(.x)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a> <span class="fu">colnames</span>(imdb_datos_completos)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>datos_bien1 <span class="ot">&lt;-</span> imdb_datos_completos <span class="sc">|&gt;</span> </span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">PrimerGenero =</span> <span class="fu">word</span>(genres, <span class="dv">1</span>, <span class="at">sep =</span> <span class="st">","</span>)) <span class="co">#Añade una nueva columna para usar </span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>      <span class="co">#solo el primer género de la pelicula, pues con tres se forman muchas cátegorias</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>datos_bien <span class="ot">&lt;-</span> datos_bien1 <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="fu">if_all</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="sc">!</span><span class="fu">is.na</span>(.x)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Así, realizamos el analisis de los distintos gráficos de nuetras variables comparadas con <code>taquilla</code></p>
+<p>Así, realizamos el análisis de los distintos gráficos de nuestras variables comparadas con <code>taquilla</code></p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -326,8 +330,8 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>Se aprecian coeficientes de correlacion altos de <code>taquilla</code> con <code>popularity</code> y <code>numVotes</code>, tal y como se esperaba , aquí el gráfico que más nos brinda informacion es el <code>ggpairs</code> de la libreria <code>GGally</code> al brindarnos una vision global de las interacciones de nuestras variables.</p>
-<p>Con esta informacion podremos iniciar la creacion de nuestros modelos.</p>
+<p>Se aprecian coeficientes de correlación altos de <code>taquilla</code> con <code>popularity</code> y <code>numVotes</code>, tal y como se esperaba. Aquí el gráfico que más nos brinda información es el <code>ggpairs</code> de la librería <code>GGally</code>, al brindarnos una visión global de las interacciones de nuestras variables.</p>
+<p>Con esta información podremos iniciar la creación de nuestros modelos.</p>
 </section>
 <section id="parte-3-creación-de-los-modelos" class="level1">
 <h1>Parte #3: Creación de los modelos</h1>
@@ -336,7 +340,7 @@ window.Quarto = {
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(datos_bien)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Como objetivo principal del documento se explorarà la creacion de modelos acordes a nuestra base de datos, es asì que se exploraràn distintas alternativas y se evaluaràn los fuertes de estos.</p>
+<p>Como objetivo principal del documento se explorará la creación de modelos acordes a nuestra base de datos, es así que se explorarán distintas alternativas y se evaluarán las fortalezas de estos.</p>
 <section id="modelos-creados-manualmente." class="level3">
 <h3 class="anchored" data-anchor-id="modelos-creados-manualmente.">3.1 Modelos creados manualmente.</h3>
 <p>Iniciamos con el primer par de modelos definidos como:</p>
@@ -405,7 +409,7 @@ Multiple R-squared:  0.5798,    Adjusted R-squared:  0.5706
 F-statistic: 63.62 on 18 and 830 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
-<p>Estos modelos son basados en las variables con mayores relaciones a nuestra variable objetivo <code>taquilla</code>. este se toma como punto inicial y base de la creacion manual de otros modelos.</p>
+<p>Estos modelos están basados en las variables con mayores relaciones a nuestra variable objetivo <code>taquilla</code>. Este se toma como punto inicial y base de la creación manual de otros modelos.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>datos_m1 <span class="ot">&lt;-</span> datos_bien <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">residuales1 =</span> modelo1<span class="sc">$</span>residuals)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -422,7 +426,7 @@ F-statistic: 63.62 on 18 and 830 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 </div>
-<p>Tras realizar el examen de los residuales, se agrega <code>numVotes</code> como otra variable y se retirò <code>RuntimeMinutes</code>. Creando asì nuestro segundo modelo.</p>
+<p>Tras realizar el examen de los residuales, se agrega <code>numVotes</code> como otra variable y se retiró <code>runtimeMinutes</code>. Creando así nuestro segundo modelo.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>modelo2 <span class="ot">&lt;-</span> <span class="fu">update</span>(modelo1, . <span class="sc">~</span> . <span class="sc">-</span> runtimeMinutes <span class="sc">+</span> numVotes)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo2) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -521,9 +525,14 @@ Multiple R-squared:  0.5732,    Adjusted R-squared:  0.5722
 F-statistic: 568.1 on 2 and 846 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
-<p>Este segundo modelo retira <code>runtimeMinutes</code> e incorpora <code>numVotes</code> (solo en <code>modelo2</code> no en <code>modelo2_alternativo</code>), el cual tras realizar comprobaciones de colinealidad dan indicaciones de ser colineales (Esta relacion es entendible pues entre mas gente interactua con la pàgina de la pelìcula dada la misma obtendra mas calificaciones).</p>
-<p>Se realizan los siguientes gràficos para la comprobacion de los residuales con otras variables:</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>datos_m1 <span class="ot">&lt;-</span> datos_bien <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">residuales1 =</span> modelo1<span class="sc">$</span>residuals)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos_m1, <span class="fu">aes</span>(<span class="at">y =</span> residuales1, <span class="at">x =</span> numVotes)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -531,32 +540,43 @@ F-statistic: 568.1 on 2 and 846 DF,  p-value: &lt; 2.2e-16</code></pre>
 </figure>
 </div>
 </div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Proyecto1_files/figure-html/unnamed-chunk-12-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
 </div>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Proyecto1_files/figure-html/unnamed-chunk-12-3.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Proyecto1_files/figure-html/unnamed-chunk-12-4.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Tras analisar estos datos se llega a un modelo nùmero 3, donde se adapta nuestro <code>modelo2_alternativo</code> y se le agregarà la relacion <code>startYear:presupuesto</code></p>
+<p>Este segundo modelo retira <code>runtimeMinutes</code> e incorpora <code>numVotes</code> (solo en <code>modelo2</code>, no en <code>modelo2_alternativo</code>), el cual, tras realizar comprobaciones de colinealidad, da indicaciones de ser colineales (Esta relación es entendible, pues entre más gente interactúa con la página de la película dada, la misma obtendrá más calificaciones).</p>
+<p>Se realizan los siguientes gráficos para la comprobación de los residuales con otras variables:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>modelo3 <span class="ot">&lt;-</span> <span class="fu">update</span>(modelo2_alternativo, . <span class="sc">~</span> . <span class="sc">+</span> startYear<span class="sc">:</span>presupuesto)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo3) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Proyecto1_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Proyecto1_files/figure-html/unnamed-chunk-13-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Proyecto1_files/figure-html/unnamed-chunk-13-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Proyecto1_files/figure-html/unnamed-chunk-13-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Tras analizar estos datos se llega a un modelo número 3, donde se adapta nuestro <code>modelo2_alternativo</code> y se le agregará la relación <code>startYear:presupuesto</code></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>modelo3 <span class="ot">&lt;-</span> <span class="fu">update</span>(modelo2_alternativo, . <span class="sc">~</span> . <span class="sc">+</span> startYear<span class="sc">:</span>presupuesto)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo3) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -579,30 +599,30 @@ Residual standard error: 91030000 on 845 degrees of freedom
 Multiple R-squared:  0.5802,    Adjusted R-squared:  0.5787 
 F-statistic: 389.2 on 3 and 845 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modelo2_alternativo)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modelo2_alternativo)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 33546.06</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modelo3) <span class="co">#Mejor pero no estoy del todo seguro por el análisis visual</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modelo3) <span class="co">#Mejor pero no estoy del todo seguro por el análisis visual</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 33534.12</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>datos_m3 <span class="ot">&lt;-</span> datos_m2 <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">residuales3 =</span> modelo3<span class="sc">$</span>residuals)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos_m3, <span class="fu">aes</span>(<span class="at">y =</span> residuales3, <span class="at">x =</span> startYear)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>datos_m3 <span class="ot">&lt;-</span> datos_m2 <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">residuales3 =</span> modelo3<span class="sc">$</span>residuals)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos_m3, <span class="fu">aes</span>(<span class="at">y =</span> residuales3, <span class="at">x =</span> startYear)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Proyecto1_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Proyecto1_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>modelo3_alterno <span class="ot">&lt;-</span> <span class="fu">update</span>(modelo3, .<span class="sc">~</span>. <span class="sc">+</span>startYear)</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo3_alterno)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>modelo3_alterno <span class="ot">&lt;-</span> <span class="fu">update</span>(modelo3, .<span class="sc">~</span>. <span class="sc">+</span>startYear)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo3_alterno)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -630,7 +650,7 @@ F-statistic: 292.4 on 4 and 844 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <p>De nuevo, se realizan verificaciones de colinealidad:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">omcdiag</span>(modelo3_alterno)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">omcdiag</span>(modelo3_alterno)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -650,7 +670,7 @@ Condition Number:        680.5304         1
 1 --&gt; COLLINEARITY is detected by the test 
 0 --&gt; COLLINEARITY is not detected by the test</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">imcdiag</span>(modelo3_alterno)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">imcdiag</span>(modelo3_alterno)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -680,7 +700,7 @@ R-square of y on all x: 0.5808
 * use method argument to check which regressors may be the reason of collinearity
 ===================================</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">vif</span>(modelo3_alterno)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">vif</span>(modelo3_alterno)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>there are higher-order terms (interactions) in this model
 consider setting type = 'predictor'; see ?vif</code></pre>
@@ -692,11 +712,11 @@ presupuesto:startYear
          45735.076287 </code></pre>
 </div>
 </div>
-<p>Con las cuales identificamos colinealidad entre presupuesto:startYear y presupuesto, la cual se agregò como prueba en <code>modelo3_alternativo</code></p>
+<p>Con las cuales identificamos colinealidad entre <code>presupuesto:startYear</code> y <code>presupuesto</code>, la cual se agregó como prueba en <code>modelo3_alternativo</code></p>
 <p>Se decide crear un cuarto modelo añadiendo el <code>averageRating</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>modelo4 <span class="ot">&lt;-</span> <span class="fu">update</span>(modelo3, . <span class="sc">~</span> . <span class="sc">+</span> averageRating)</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo4)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>modelo4 <span class="ot">&lt;-</span> <span class="fu">update</span>(modelo3, . <span class="sc">~</span> . <span class="sc">+</span> averageRating)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo4)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -721,8 +741,8 @@ Residual standard error: 90030000 on 844 degrees of freedom
 Multiple R-squared:  0.5898,    Adjusted R-squared:  0.5879 
 F-statistic: 303.4 on 4 and 844 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>modelo4_alterno <span class="ot">&lt;-</span> <span class="fu">update</span>(modelo3, . <span class="sc">~</span> . <span class="sc">-</span> presupuesto<span class="sc">:</span>startYear <span class="sc">+</span> startYear)</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo4_alterno)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>modelo4_alterno <span class="ot">&lt;-</span> <span class="fu">update</span>(modelo3, . <span class="sc">~</span> . <span class="sc">-</span> presupuesto<span class="sc">:</span>startYear <span class="sc">+</span> startYear)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo4_alterno)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -750,15 +770,15 @@ F-statistic: 382.3 on 3 and 845 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Proyecto1_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Proyecto1_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Este cuarto modelo presenta mejoras en nuestro <span class="math inline">\(R²_{adj}\)</span>, se adaptarà un quinto modelo probando la inclusion de <code>startYear</code> , <code>averageRating</code> y <code>presupuesto:startYear</code> al tercer modelo.</p>
+<p>Este cuarto modelo presenta mejoras en nuestro <span class="math inline">\(R²_{adj}\)</span>, se adaptará un quinto modelo probando la inclusión de <code>startYear</code>, <code>averageRating</code> y <code>presupuesto:startYear</code> al tercer modelo.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>modelo5 <span class="ot">&lt;-</span> <span class="fu">update</span>(modelo3, . <span class="sc">~</span> . <span class="sc">-</span> presupuesto<span class="sc">:</span>startYear <span class="sc">+</span> startYear <span class="sc">+</span> averageRating)</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>modelo5 <span class="ot">&lt;-</span> <span class="fu">update</span>(modelo3, . <span class="sc">~</span> . <span class="sc">-</span> presupuesto<span class="sc">:</span>startYear <span class="sc">+</span> startYear <span class="sc">+</span> averageRating)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -783,8 +803,8 @@ Residual standard error: 90560000 on 844 degrees of freedom
 Multiple R-squared:  0.585, Adjusted R-squared:  0.583 
 F-statistic: 297.4 on 4 and 844 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="do">##Revisión multicolinealidad</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">omcdiag</span>(modelo5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="do">##Revisión multicolinealidad</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">omcdiag</span>(modelo5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -804,7 +824,7 @@ Condition Number:        291.9460         1
 1 --&gt; COLLINEARITY is detected by the test 
 0 --&gt; COLLINEARITY is not detected by the test</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">imcdiag</span>(modelo5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">imcdiag</span>(modelo5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -829,16 +849,16 @@ R-square of y on all x: 0.585
 * use method argument to check which regressors may be the reason of collinearity
 ===================================</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">vif</span>(modelo5) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">vif</span>(modelo5) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  presupuesto    popularity     startYear averageRating 
      1.159613      1.134700      1.089268      1.038582 </code></pre>
 </div>
 </div>
-<p>Como untimo cambio a nuestro modelo creado de manera manual crearemos la sexta iteracion de nuestro modelo creado “a ojo” eliminando la variable <code>startYear</code> por la colinealidad con <code>startYear:presupuesto</code></p>
+<p>Como último cambio a nuestro modelo creado de manera manual crearemos la sexta iteración de nuestro modelo creado “a ojo”, eliminando la variable <code>startYear</code> por la colinealidad con <code>startYear:presupuesto</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>modelo6 <span class="ot">&lt;-</span> <span class="fu">update</span>(modelo5, .<span class="sc">~</span>. <span class="sc">-</span> startYear)</span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo6)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>modelo6 <span class="ot">&lt;-</span> <span class="fu">update</span>(modelo5, .<span class="sc">~</span>. <span class="sc">-</span> startYear)</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo6)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -861,7 +881,7 @@ Residual standard error: 90650000 on 845 degrees of freedom
 Multiple R-squared:  0.5837,    Adjusted R-squared:  0.5822 
 F-statistic: 394.9 on 3 and 845 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">omcdiag</span>(modelo6)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">omcdiag</span>(modelo6)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -881,7 +901,7 @@ Condition Number:         14.9602         0
 1 --&gt; COLLINEARITY is detected by the test 
 0 --&gt; COLLINEARITY is not detected by the test</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">imcdiag</span>(modelo6)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">imcdiag</span>(modelo6)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -905,38 +925,38 @@ R-square of y on all x: 0.5837
 * use method argument to check which regressors may be the reason of collinearity
 ===================================</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">vif</span>(modelo6)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">vif</span>(modelo6)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  presupuesto    popularity averageRating 
      1.110128      1.125953      1.015201 </code></pre>
 </div>
 </div>
-<p>Este último modelo creado manualmente se adapta de manera correcta a nuestros objetivos, a continuacion se compará al modelo creado automáticamente por el comando <code>step()</code>.</p>
+<p>Este último modelo creado manualmente se adapta de manera correcta a nuestros objetivos. A continuación se comparará con el modelo creado automáticamente por el comando <code>step()</code>.</p>
 </section>
-<section id="modelo-optimizado-funcion-step" class="level3">
-<h3 class="anchored" data-anchor-id="modelo-optimizado-funcion-step">3.2 Modelo optimizado, Funcion <code>step()</code></h3>
-<p>A la par de la creacion manual de nuestros modelos y llegar a nuestro modelo deseado tambien se aplicarà la funcion <code>step()</code> con el objetivo de crear un modelo optimizado de manera automàtica.</p>
-<p>Para esto se define en primer lugar nuestro modelo “full”, o en este caso, 2 modelos “full”; uno incluyendo nuestra varriable categorica <code>PrimerGenero</code> y otra sin esta categórica</p>
+<section id="modelo-optimizado-función-step" class="level3">
+<h3 class="anchored" data-anchor-id="modelo-optimizado-función-step">3.2 Modelo optimizado, función <code>step()</code></h3>
+<p>A la par de la creación manual de nuestros modelos y llegar a nuestro modelo deseado, también se aplicará la función <code>step()</code> con el objetivo de crear un modelo optimizado de manera automática.</p>
+<p>Para esto se define en primer lugar nuestro modelo “full”, o en este caso, dos modelos “full”: uno incluyendo nuestra variable categórica <code>PrimerGenero</code> y otra sin esta categórica</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>modelo_full <span class="ot">&lt;-</span> <span class="fu">lm</span>(taquilla <span class="sc">~</span> (runtimeMinutes <span class="sc">+</span> averageRating <span class="sc">+</span> numVotes <span class="sc">+</span> presupuesto <span class="sc">+</span> </span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>  startYear <span class="sc">+</span> popularity <span class="sc">+</span> PrimerGenero)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_full)</span>
-<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>modelo_full2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(taquilla <span class="sc">~</span> (runtimeMinutes <span class="sc">+</span> averageRating <span class="sc">+</span> numVotes <span class="sc">+</span> presupuesto <span class="sc">+</span></span>
-<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>                                 startYear <span class="sc">+</span> popularity)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_full2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>modelo_full <span class="ot">&lt;-</span> <span class="fu">lm</span>(taquilla <span class="sc">~</span> (runtimeMinutes <span class="sc">+</span> averageRating <span class="sc">+</span> numVotes <span class="sc">+</span> presupuesto <span class="sc">+</span> </span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  startYear <span class="sc">+</span> popularity <span class="sc">+</span> PrimerGenero)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_full)</span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>modelo_full2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(taquilla <span class="sc">~</span> (runtimeMinutes <span class="sc">+</span> averageRating <span class="sc">+</span> numVotes <span class="sc">+</span> presupuesto <span class="sc">+</span></span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>                                 startYear <span class="sc">+</span> popularity)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_full2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Corremos el comando <code>steps()</code></p>
+<p>Corremos el comando <code>step()</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>modelo_optimizado <span class="ot">&lt;-</span> <span class="fu">step</span>(modelo_full)</span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>modelo_optimizado2 <span class="ot">&lt;-</span> <span class="fu">step</span>(modelo_full2)</span>
-<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_optimizado2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>modelo_optimizado <span class="ot">&lt;-</span> <span class="fu">step</span>(modelo_full)</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>modelo_optimizado2 <span class="ot">&lt;-</span> <span class="fu">step</span>(modelo_full2)</span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_optimizado2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Y obtenemos Nuestro modelo optimizado:</p>
+<p>Y obtenemos nuestros modelos optimizados:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_optimizado)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_optimizado)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1007,7 +1027,7 @@ Residual standard error: 71230000 on 805 degrees of freedom
 Multiple R-squared:  0.7551,    Adjusted R-squared:  0.742 
 F-statistic: 57.73 on 43 and 805 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_optimizado2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_optimizado2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1044,21 +1064,200 @@ Residual standard error: 72580000 on 835 degrees of freedom
 Multiple R-squared:  0.7363,    Adjusted R-squared:  0.7321 
 F-statistic: 179.3 on 13 and 835 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modelo5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modelo5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 33526.3</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modelo_optimizado2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modelo_optimizado2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 33159.41</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modelo_optimizado)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modelo_optimizado)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 33156.38</code></pre>
 </div>
 </div>
-<p>Realizando la comparaciòn de nuestro modelo manual con nuestro modelo creado automàticamente con la funcion <code>step()</code> podemos apreciar:</p>
 </section>
+<section id="comparación-de-nuestros-3-modelos-finalistas" class="level3">
+<h3 class="anchored" data-anchor-id="comparación-de-nuestros-3-modelos-finalistas">3.3 Comparación de nuestros 3 modelos finalistas</h3>
+<p>Realizando la comparación de nuestro modelo manual con nuestro modelo creado automáticamente con la función <code>step()</code> podemos apreciar:</p>
+<p>Nuestro modelo con mejor valor de <code>AIC</code> es nuestro modelo optimizado con todas las variables (incluyendo nuestras categóricas de <code>primerGenero</code> relacionadas con la variable de presupuesto), esto quiere decir una cantidad enorme de estimados de los cuales son muy pocos los realmente significantes.</p>
+<p>Nuestro segundo mejor modelo fue el segundo optimizado del comando <code>step()</code>, el cual, aunque con un AIC mayor a nuestro <code>modelo_optimizado</code> original, tiene una disminución notable del número de variables y del porcentaje de estas que podemos considerar estadísticamente significativas.</p>
+<p>Nuestro tercer modelo, el “creado manualmente”, se queda rezagado comparado a los otros 2 al comparar tanto el AIC como el <span class="math inline">\(R²_{adj}\)</span>, siendo este el modelo inferior a pesar de su sencillez.</p>
+</section>
+</section>
+<section id="parte-4-predicciones-usando-el-modelo-optimizado-2" class="level1">
+<h1>Parte #4: Predicciones usando el modelo optimizado 2</h1>
+<p>Se elige el modelo optimizado 2 como modelo a utilizar para realizar predicciones. En este caso se añadirán datos de 3 películas hipotéticas, creando así el objeto <code>nuevas_peliculas</code>, donde se mostrarán los resultados.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>nuevas_peliculas <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">runtimeMinutes =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">120</span>, <span class="dv">140</span>),</span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">averageRating =</span> <span class="fu">c</span>(<span class="fl">5.5</span>, <span class="fl">6.5</span>, <span class="fl">7.5</span>),</span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">numVotes =</span> <span class="fu">c</span>(<span class="dv">50000</span>, <span class="dv">150000</span>, <span class="dv">500000</span>),</span>
+<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">presupuesto =</span> <span class="fu">c</span>(<span class="dv">10000000</span>, <span class="dv">30000000</span>, <span class="dv">80000000</span>),</span>
+<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">startYear =</span> <span class="fu">c</span>(<span class="dv">2010</span>, <span class="dv">2015</span>, <span class="dv">2020</span>),</span>
+<span id="cb75-7"><a href="#cb75-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">popularity =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">30</span>, <span class="dv">70</span>)</span>
+<span id="cb75-8"><a href="#cb75-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb75-9"><a href="#cb75-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-10"><a href="#cb75-10" aria-hidden="true" tabindex="-1"></a>intervalos_confianza <span class="ot">&lt;-</span> <span class="fu">predict</span>(modelo_optimizado2,</span>
+<span id="cb75-11"><a href="#cb75-11" aria-hidden="true" tabindex="-1"></a>                                <span class="at">newdata =</span> nuevas_peliculas,</span>
+<span id="cb75-12"><a href="#cb75-12" aria-hidden="true" tabindex="-1"></a>                                <span class="at">interval =</span> <span class="st">"confidence"</span>,</span>
+<span id="cb75-13"><a href="#cb75-13" aria-hidden="true" tabindex="-1"></a>                                <span class="at">level =</span> <span class="fl">0.95</span>)</span>
+<span id="cb75-14"><a href="#cb75-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-15"><a href="#cb75-15" aria-hidden="true" tabindex="-1"></a>intervalos_prediccion <span class="ot">&lt;-</span> <span class="fu">predict</span>(modelo_optimizado2,</span>
+<span id="cb75-16"><a href="#cb75-16" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">newdata =</span> nuevas_peliculas,</span>
+<span id="cb75-17"><a href="#cb75-17" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">interval =</span> <span class="st">"prediction"</span>,</span>
+<span id="cb75-18"><a href="#cb75-18" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">level =</span> <span class="fl">0.95</span>)</span>
+<span id="cb75-19"><a href="#cb75-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-20"><a href="#cb75-20" aria-hidden="true" tabindex="-1"></a>nuevas_peliculas<span class="sc">$</span>taquilla_predicha <span class="ot">&lt;-</span> intervalos_confianza[, <span class="st">"fit"</span>]</span>
+<span id="cb75-21"><a href="#cb75-21" aria-hidden="true" tabindex="-1"></a>nuevas_peliculas<span class="sc">$</span>limite_inferior_confianza <span class="ot">&lt;-</span> intervalos_confianza[, <span class="st">"lwr"</span>]</span>
+<span id="cb75-22"><a href="#cb75-22" aria-hidden="true" tabindex="-1"></a>nuevas_peliculas<span class="sc">$</span>limite_superior_confianza <span class="ot">&lt;-</span> intervalos_confianza[, <span class="st">"upr"</span>]</span>
+<span id="cb75-23"><a href="#cb75-23" aria-hidden="true" tabindex="-1"></a>nuevas_peliculas<span class="sc">$</span>limite_inferior_prediccion <span class="ot">&lt;-</span> intervalos_prediccion[, <span class="st">"lwr"</span>]</span>
+<span id="cb75-24"><a href="#cb75-24" aria-hidden="true" tabindex="-1"></a>nuevas_peliculas<span class="sc">$</span>limite_superior_prediccion <span class="ot">&lt;-</span> intervalos_prediccion[, <span class="st">"upr"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Así podemos ver nuestras predicciones como:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>  runtimeMinutes averageRating numVotes presupuesto startYear popularity
+1            100           5.5    50000       1e+07      2010         10
+2            120           6.5   150000       3e+07      2015         30
+3            140           7.5   500000       8e+07      2020         70
+  taquilla_predicha limite_inferior_confianza limite_superior_confianza
+1          28719475                  18738449                  38700502
+2          62006788                  34092074                  89921502
+3           8585191                -147483487                 164653870
+  limite_inferior_prediccion limite_superior_prediccion
+1                 -114092804                  171531755
+2                  -83165377                  207178953
+3                 -202727749                  219898132</code></pre>
+</div>
+</div>
+</section>
+<section id="parte-5-validación-del-modelo" class="level1">
+<h1>Parte #5 validación del modelo</h1>
+<p>Se realizan las siguientes comprobaciones y test a nuestro modelo elegido <code>modelo_optimizado2</code>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Proyecto1_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Por el gráfico podemos observar que se presenta cierta normalidad en los datos exceptuando un peso visible en las colas.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  modelo_optimizado2$residuals
+W = 0.6065, p-value &lt; 2.2e-16</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Lilliefors (Kolmogorov-Smirnov) normality test
+
+data:  modelo_optimizado2$residuals
+D = 0.22816, p-value &lt; 2.2e-16</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Anderson-Darling normality test
+
+data:  modelo_optimizado2$residuals
+A = 79.175, p-value &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>Bajo las pruebas de normalidad podemos observar que no se presenta normalidad en los residuales.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Proyecto1_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    studentized Breusch-Pagan test
+
+data:  modelo_optimizado2
+BP = 99.641, df = 13, p-value = 1.947e-15</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Non-constant Variance Score Test 
+Variance formula: ~ fitted.values 
+Chisquare = 1959.202, Df = 1, p = &lt; 2.22e-16</code></pre>
+</div>
+</div>
+<p>En el gráfico podemos observar indicios de heterocedasticidad en el modelo, lo que significa que el supuesto de homocedasticidad podría estar incumpliéndose, y con los test realizados podemos ver que no se cumple la homocedasticidad.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Proyecto1_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 13
+  tconst    primaryTitle startYear runtimeMinutes genres  averageRating numVotes
+  &lt;chr&gt;     &lt;chr&gt;            &lt;dbl&gt;          &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;    &lt;dbl&gt;
+1 tt2820852 Furious 7         2015            137 Action…           7.1   447108
+# ℹ 6 more variables: presupuesto &lt;dbl&gt;, taquilla &lt;dbl&gt;, popularity &lt;dbl&gt;,
+#   log_presupuesto &lt;dbl&gt;, log_taquilla &lt;dbl&gt;, PrimerGenero &lt;chr&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 13
+  tconst    primaryTitle  startYear runtimeMinutes genres averageRating numVotes
+  &lt;chr&gt;     &lt;chr&gt;             &lt;dbl&gt;          &lt;dbl&gt; &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;
+1 tt0107290 Jurassic Park      1993            127 Adven…           8.2  1207103
+# ℹ 6 more variables: presupuesto &lt;dbl&gt;, taquilla &lt;dbl&gt;, popularity &lt;dbl&gt;,
+#   log_presupuesto &lt;dbl&gt;, log_taquilla &lt;dbl&gt;, PrimerGenero &lt;chr&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 13
+  tconst     primaryTitle startYear runtimeMinutes genres averageRating numVotes
+  &lt;chr&gt;      &lt;chr&gt;            &lt;dbl&gt;          &lt;dbl&gt; &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;
+1 tt13462900 The Battle …      2021            176 Actio…           5.5     4975
+# ℹ 6 more variables: presupuesto &lt;dbl&gt;, taquilla &lt;dbl&gt;, popularity &lt;dbl&gt;,
+#   log_presupuesto &lt;dbl&gt;, log_taquilla &lt;dbl&gt;, PrimerGenero &lt;chr&gt;</code></pre>
+</div>
+</div>
+<p>Se observan algunas películas influyentes, como <em>Furious 7</em>, <em>Jurassic Park</em> y <em>The Battle at Lake Changjin</em>. Deben revisarse antes de determinar si representan valores atípicos válidos o errores en los datos.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Proyecto1_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>En este gráfico se aprecia que la dispersión de los residuales aumenta en algunos valores ajustados mayores, lo que refuerza la presencia de heterocedasticidad.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Proyecto1_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Durbin-Watson test
+
+data:  modelo_optimizado2
+DW = 1.9442, p-value = 0.2092
+alternative hypothesis: true autocorrelation is greater than 0</code></pre>
+</div>
+</div>
+<p>El gráfico no muestra una relación marcada entre los residuales y los valores ajustados, aunque aparecen varios errores de gran magnitud. El test de Durbin-Watson (<span class="math inline">\(DW=1.9442\)</span>, <span class="math inline">\(p=0.2092\)</span>) no presenta evidencia suficiente de autocorrelación positiva en los residuales.</p>
+</section>
+<section id="parte-6-conclusión-y-cierre" class="level1">
+<h1>Parte #6 Conclusión y cierre</h1>
+<p>El análisis muestra que el <code>modelo_optimizado2</code> explica aproximadamente el <span class="math inline">\(73.21\%\)</span> de la variación de la taquilla y ofrece predicciones junto con intervalos de confianza y predicción del <span class="math inline">\(95\%\)</span>. Sin embargo, los residuales no cumplen la normalidad ni la homocedasticidad, por lo que sus intervalos e inferencias deben interpretarse con cautela. En general, el presupuesto, los votos, la popularidad y sus interacciones son importantes para estimar la taquilla, aunque conviene revisar las observaciones influyentes antes de aplicar el modelo a películas nuevas, todo esto teniendo en cuenta la volatilidad de la industria del cine.</p>
 </section>
 
 </main>
@@ -1141,7 +1340,8 @@ F-statistic: 179.3 on 13 and 835 DF,  p-value: &lt; 2.2e-16</code></pre>
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -1150,8 +1350,69 @@ F-statistic: 179.3 on 13 and 835 DF,  p-value: &lt; 2.2e-16</code></pre>
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -1165,6 +1426,7 @@ F-statistic: 179.3 on 13 and 835 DF,  p-value: &lt; 2.2e-16</code></pre>
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -1327,44 +1589,54 @@ F-statistic: 179.3 on 13 and 835 DF,  p-value: &lt; 2.2e-16</code></pre>
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -1462,6 +1734,9 @@ F-statistic: 179.3 on 13 and 835 DF,  p-value: &lt; 2.2e-16</code></pre>
       }
     }
   });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
   </script>
 </div> <!-- /content -->
 

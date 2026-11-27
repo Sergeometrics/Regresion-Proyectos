@@ -7,7 +7,7 @@ library(car)
 library(GGally)
 library(nortest)
 library(lmtest)
-
+install.packages("zoo")
 
 imdb_datos_completos  <- read_csv("imdb_datos_completos.csv")
 View(imdb_datos_completos)
@@ -190,3 +190,33 @@ ggplot(data = datos_bien, aes(x = modelo_optimizado2$fitted.values, y = modelo_o
 plot(modelo_optimizado2, which=1, col=c("blue")) # No parece haber un patron claro, a parte de la clara heterocedasticidad
 
 dwtest(modelo_optimizado2) # No hay autocorrelación para significancias mayores o iguales a 5%
+
+## Predicciones de taquilla e intervalos de confianza
+
+nuevas_peliculas <- data.frame(
+  runtimeMinutes = c(100, 120, 140, 160),
+  averageRating = c(5.5, 6.5, 7.5, 8.5),
+  numVotes = c(50000, 150000, 500000, 1000000),
+  presupuesto = c(10000000, 30000000, 80000000, 150000000),
+  startYear = c(2010, 2015, 2020, 2025),
+  popularity = c(10, 30, 70, 120)
+)
+
+intervalos_confianza <- predict(modelo_optimizado2,
+                                newdata = nuevas_peliculas,
+                                interval = "confidence",
+                                level = 0.95)
+
+intervalos_prediccion <- predict(modelo_optimizado2,
+                                 newdata = nuevas_peliculas,
+                                 interval = "prediction",
+                                 level = 0.95)
+
+nuevas_peliculas$taquilla_predicha <- intervalos_confianza[, "fit"]
+nuevas_peliculas$limite_inferior_confianza <- intervalos_confianza[, "lwr"]
+nuevas_peliculas$limite_superior_confianza <- intervalos_confianza[, "upr"]
+nuevas_peliculas$limite_inferior_prediccion <- intervalos_prediccion[, "lwr"]
+nuevas_peliculas$limite_superior_prediccion <- intervalos_prediccion[, "upr"]
+
+nuevas_peliculas
+
